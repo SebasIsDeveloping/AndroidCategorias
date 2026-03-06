@@ -1,0 +1,194 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:InteractiveApp.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="InteractiveApp.Views.ArrastrarView"
+             x:DataType="viewModels:ArrastrarViewModel">
+    <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <viewModels:ArrastrarViewModel />
+  </Design.DataContext>
+        <UserControl.Background>
+                <ImageBrush Stretch="Fill"
+                            Source="avares://InteractiveApp/Assets/img/fondo_restaurante_completo.png">
+                </ImageBrush>
+        </UserControl.Background>
+
+  <Grid>
+      <Grid ShowGridLines="False"
+            ColumnDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*"
+            RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*">
+          <Border Name="HuecoV"
+                  Background="Transparent"
+                  Width="175"
+                  Height="80"
+                  Grid.Row="24"
+                  Grid.Column="7" />
+          <Border Name="HuecoC"
+                  Width="175"
+                  Height="80"
+                  Background="Transparent"
+                  Grid.Row="24"
+                  Grid.Column="22" />
+          <Border Name="HuecoP"
+                  Width="175"
+                  Height="80"
+                  Background="Transparent"
+                  Grid.Row="24"
+                  Grid.Column="35" />
+          
+          <Thumb Name="I1"
+                 ZIndex="1" 
+                 Grid.Column="8"
+                 Grid.Row="4"
+                 Grid.ColumnSpan="5"
+                 Grid.RowSpan="5">
+          
+                  <Interaction.Behaviors>
+                          <EventTriggerBehavior EventName="DragDelta">
+                                  <InvokeCommandAction PassEventArgsToCommand="True"
+                                                       Command="{Binding ScrollCommand}" />
+                          </EventTriggerBehavior>
+                          <EventTriggerBehavior EventName="DragCompleted">
+                                  <InvokeCommandAction PassEventArgsToCommand="True"
+                                                       Command="{Binding DragCompletedCommand}" />
+                          </EventTriggerBehavior>
+                  </Interaction.Behaviors>
+          
+                  <Thumb.Template>
+                          <ControlTemplate>
+                                  <Border Background="Crimson" Width="75" Height="75"/>
+                          </ControlTemplate>
+                  </Thumb.Template>
+          </Thumb>
+          
+          <Thumb Name="I2"
+                 ZIndex="1" 
+                 Grid.Column="19"
+                 Grid.Row="4"
+                 Grid.ColumnSpan="5"
+                 Grid.RowSpan="5">
+          
+                  <Interaction.Behaviors>
+                          <EventTriggerBehavior EventName="DragDelta">
+                                  <InvokeCommandAction PassEventArgsToCommand="True"
+                                                       Command="{Binding ScrollCommand}" />
+                          </EventTriggerBehavior>
+                          <EventTriggerBehavior EventName="DragCompleted">
+                                  <InvokeCommandAction PassEventArgsToCommand="True"
+                                                       Command="{Binding DragCompletedCommand}" />
+                          </EventTriggerBehavior>
+                  </Interaction.Behaviors>
+          
+                  <Thumb.Template>
+                          <ControlTemplate>
+                                  <Border Background="Orange" Width="75" Height="75"/>
+                          </ControlTemplate>
+                  </Thumb.Template>
+          </Thumb>
+          
+          <Thumb Name="I3"
+                 ZIndex="1" 
+                 Grid.Column="29"
+                 Grid.Row="4"
+                 Grid.ColumnSpan="5"
+                 Grid.RowSpan="5">
+          
+                  <Interaction.Behaviors>
+                          <EventTriggerBehavior EventName="DragDelta">
+                                  <InvokeCommandAction PassEventArgsToCommand="True"
+                                                       Command="{Binding ScrollCommand}" />
+                          </EventTriggerBehavior>
+                          <EventTriggerBehavior EventName="DragCompleted">
+                                  <InvokeCommandAction PassEventArgsToCommand="True"
+                                                       Command="{Binding DragCompletedCommand}" />
+                          </EventTriggerBehavior>
+                  </Interaction.Behaviors>
+          
+                  <Thumb.Template>
+                          <ControlTemplate>
+                                  <Border Background="Cyan" Width="75" Height="75"/>
+                          </ControlTemplate>
+                  </Thumb.Template>
+          </Thumb>
+          
+          <Thumb Name="I4"
+                 ZIndex="1" 
+                 Grid.Column="8"
+                 Grid.Row="12"
+                 Grid.ColumnSpan="5"
+                 Grid.RowSpan="5">
+          
+                  <Interaction.Behaviors>
+                          <EventTriggerBehavior EventName="DragDelta">
+                                  <InvokeCommandAction PassEventArgsToCommand="True"
+                                                       Command="{Binding ScrollCommand}" />
+                          </EventTriggerBehavior>
+                          <EventTriggerBehavior EventName="DragCompleted">
+                                  <InvokeCommandAction PassEventArgsToCommand="True"
+                                                       Command="{Binding DragCompletedCommand}" />
+                          </EventTriggerBehavior>
+                  </Interaction.Behaviors>
+          
+                  <Thumb.Template>
+                          <ControlTemplate>
+                                  <Border Background="Blue" Width="75" Height="75"/>
+                          </ControlTemplate>
+                  </Thumb.Template>
+          </Thumb>
+          
+          <Thumb Name="I5"
+                 ZIndex="1" 
+                 Grid.Column="19"
+                 Grid.Row="12"
+                 Grid.ColumnSpan="5"
+                 Grid.RowSpan="5">
+          
+                  <Interaction.Behaviors>
+                          <EventTriggerBehavior EventName="DragDelta">
+                                  <InvokeCommandAction PassEventArgsToCommand="True"
+                                                       Command="{Binding ScrollCommand}" />
+                          </EventTriggerBehavior>
+                          <EventTriggerBehavior EventName="DragCompleted">
+                                  <InvokeCommandAction PassEventArgsToCommand="True"
+                                                       Command="{Binding DragCompletedCommand}" />
+                          </EventTriggerBehavior>
+                  </Interaction.Behaviors>
+          
+                  <Thumb.Template>
+                          <ControlTemplate>
+                                  <Border Background="GreenYellow" Width="75" Height="75"/>
+                          </ControlTemplate>
+                  </Thumb.Template>
+          </Thumb>
+          
+          <Thumb Name="I6"
+                 ZIndex="1" 
+                 Grid.Column="29"
+                 Grid.Row="12"
+                 Grid.ColumnSpan="5"
+                 Grid.RowSpan="5">
+          
+                  <Interaction.Behaviors>
+                          <EventTriggerBehavior EventName="DragDelta">
+                                  <InvokeCommandAction PassEventArgsToCommand="True"
+                                                       Command="{Binding ScrollCommand}" />
+                          </EventTriggerBehavior>
+                          <EventTriggerBehavior EventName="DragCompleted">
+                                  <InvokeCommandAction PassEventArgsToCommand="True"
+                                                       Command="{Binding DragCompletedCommand}" />
+                          </EventTriggerBehavior>
+                  </Interaction.Behaviors>
+          
+                  <Thumb.Template>
+                          <ControlTemplate>
+                                  <Border Background="Yellow" Width="75" Height="75"/>
+                          </ControlTemplate>
+                  </Thumb.Template>
+          </Thumb>
+      </Grid>
+  </Grid>
+</UserControl>
