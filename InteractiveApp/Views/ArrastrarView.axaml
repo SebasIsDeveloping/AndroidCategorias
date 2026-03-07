@@ -19,9 +19,12 @@
 
   <Grid>
     <Border Background="AntiqueWhite" BorderBrush="Black"
+            BoxShadow="10 10 5 0 #80000000"
             HorizontalAlignment="Center"
+            CornerRadius="20"
+            Padding="20, 10"
             VerticalAlignment="Bottom"
-            Width="800" Height="200"
+            Width="800" Height="250"
             Margin="0, 0, 0, 500"
             ZIndex="100"
             BorderThickness="2"
@@ -33,8 +36,20 @@
                    FontWeight="Bold"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
+                   Margin="0,0, 0, 0"
                    Foreground="Black"
                    ZIndex="110"/>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center"
+                    HorizontalAlignment="Center" Margin="0, 40, 40, 0">
+          <Button Content="Menu" Margin="30, 0, 50, 0"
+                  FontSize="30" Padding="20, 10" CornerRadius="10"
+                  Background="MediumTurquoise" Command="{Binding VolverMenuCommand}"/>
+          <Button Content="Siguiente nivel" Margin="50, 0, 0, 0"
+                  Padding="20, 10"
+                  Background="MediumSpringGreen"
+                  FontSize="30" CornerRadius="10"
+                  Command="{Binding SiguienteNivelCommand}"/>
+        </StackPanel>
       </StackPanel>
     </Border>
 
@@ -44,21 +59,21 @@
       
       <Border Name="HuecoV"
               Background="Transparent"
-              Width="175"
-              Height="80"
-              Grid.Row="24"
+              Width="400"
+              Height="190"
+              Grid.Row="23"
               Grid.Column="7"/>
       <Border Name="HuecoC"
-              Width="175"
-              Height="80"
+              Width="400"
+              Height="190"
               Background="Transparent"
-              Grid.Row="24"
-              Grid.Column="22"/>
+              Grid.Row="23"
+              Grid.Column="21"/>
       <Border Name="HuecoP"
-              Width="175"
-              Height="80"
+              Width="400"
+              Height="190"
               Background="Transparent"
-              Grid.Row="24"
+              Grid.Row="23"
               Grid.Column="35"/>
       
       <Thumb Name="I1" Tag="HuecoP" ZIndex="1" Grid.Column="8" Grid.Row="4" Grid.ColumnSpan="5" Grid.RowSpan="5">
@@ -72,7 +87,7 @@
         </Interaction.Behaviors>
         <Thumb.Template>
           <ControlTemplate>
-            <Border Background="Crimson" Width="75" Height="75"/>
+            <Border Background="Crimson" Width="200" Height="175"/>
           </ControlTemplate>
         </Thumb.Template>
       </Thumb>
@@ -88,7 +103,7 @@
         </Interaction.Behaviors>
         <Thumb.Template>
           <ControlTemplate>
-            <Border Background="Orange" Width="75" Height="75"/>
+            <Border Background="Orange" Width="200" Height="175"/>
           </ControlTemplate>
         </Thumb.Template>
       </Thumb>
@@ -104,7 +119,7 @@
         </Interaction.Behaviors>
         <Thumb.Template>
           <ControlTemplate>
-            <Border Background="Cyan" Width="75" Height="75"/>
+            <Border Background="Cyan" Width="200" Height="175"/>
           </ControlTemplate>
         </Thumb.Template>
       </Thumb>
@@ -120,7 +135,7 @@
         </Interaction.Behaviors>
         <Thumb.Template>
           <ControlTemplate>
-            <Border Background="Blue" Width="75" Height="75"/>
+            <Border Background="Blue" Width="200" Height="175"/>
           </ControlTemplate>
         </Thumb.Template>
       </Thumb>
@@ -136,7 +151,7 @@
         </Interaction.Behaviors>
         <Thumb.Template>
           <ControlTemplate>
-            <Border Background="GreenYellow" Width="75" Height="75"/>
+            <Border Background="GreenYellow" Width="200" Height="175"/>
           </ControlTemplate>
         </Thumb.Template>
       </Thumb>
@@ -152,7 +167,7 @@
         </Interaction.Behaviors>
         <Thumb.Template>
           <ControlTemplate>
-            <Border Background="Yellow" Width="75" Height="75"/>
+            <Border Background="Yellow" Width="200" Height="175"/>
           </ControlTemplate>
         </Thumb.Template>
       </Thumb>
