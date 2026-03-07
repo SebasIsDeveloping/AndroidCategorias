@@ -12,12 +12,14 @@ using Avalonia.Threading;
 using Avalonia.VisualTree;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using InteractiveApp.Services;
 using InteractiveApp.Views;
 
 namespace InteractiveApp.ViewModels;
 
 public partial class ArrastrarViewModel : ViewModelBase
 {
+    private NavegationService _navegationService;
     [ObservableProperty] private bool isLevelOk;
     
     private Point _posI1, _posI2, _posI3, _posI4, _posI5, _posI6;
@@ -26,6 +28,15 @@ public partial class ArrastrarViewModel : ViewModelBase
     private int _nivelActual = 1;
     private HashSet<string> _colocados = new();
     private UserControl? _ultimaVista;
+    
+    public ArrastrarViewModel(NavegationService navegationService)
+    {
+        _navegationService = navegationService;
+    }
+    public ArrastrarViewModel()
+    {
+        
+    }
     
     private void CambiarTags(UserControl view)
     {
@@ -187,7 +198,7 @@ public partial class ArrastrarViewModel : ViewModelBase
     [RelayCommand]
     private void VolverMenu()
     {
-        
+        _navegationService.NavigateTo(NavegationService.INICIO_VIEW);
     }
 
     [RelayCommand]

@@ -23,5 +23,6 @@
         </PackageReference>
         <PackageReference Include="Avalonia.Xaml.Behaviors" />
         <PackageReference Include="CommunityToolkit.Mvvm" />
+        <PackageReference Include="FluentAvaloniaUI" />
     </ItemGroup>
 </Project>
