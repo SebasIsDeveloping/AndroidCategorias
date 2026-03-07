@@ -2,12 +2,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="using:InteractiveApp.ViewModels"
-             xmlns:anim="https://github.com/whistyun/AnimatedImage.Avalonia"
-             xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
+             xmlns:fa="using:FluentAvalonia.UI.Controls"
+             xmlns:vm="clr-namespace:InteractiveApp.ViewModels"
              mc:Ignorable="d"
-             d:DesignWidth="800"
-             d:DesignHeight="450"
+             d:DesignWidth="1920" d:DesignHeight="1080"
              x:Class="InteractiveApp.Views.MainView"
              x:DataType="vm:MainViewModel">
     <Design.DataContext>
@@ -15,23 +13,19 @@
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainViewModel />
     </Design.DataContext>
-    <Grid>
-        <Image Width="300"
-               Height="300"
-               IsVisible="{Binding IsRecord}"
-               anim:ImageBehavior.AnimatedSource="avares://InteractiveApp/Assets/listening.gif" />
+    <fa:NavigationView
+        PaneDisplayMode="Left"
+        IsPaneOpen="False"
+        IsSettingsVisible="False"
+        IsPaneToggleButtonVisible="False"
+        OpenPaneLength="0"
+        CompactPaneLength="0"
+        SelectedItem="{Binding NavegationService.SelectMenuItem}"
+        MenuItemsSource="{Binding NavegationService.MenuItems}">
 
-        <StackPanel>
-            <TextBlock Text="{Binding Text}" />
-            <Button Content="HABLAR"
-                    Command="{Binding RecordCommand}" />
-            <Button Content="CAMARA"
-                    Command="{Binding  TakePhotoCommand}" />
-            <Image Width="300"
-                   Height="300"
-                   asyncImageLoader:ImageLoader.Source="{Binding PhotoPath}" />
-        </StackPanel>
-    </Grid>
+        <fa:NavigationView.Content>
+            <ContentControl Content="{Binding NavegationService.CurrentView}"/>
+        </fa:NavigationView.Content>
 
-
+    </fa:NavigationView>
 </UserControl>
