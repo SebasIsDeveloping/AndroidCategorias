@@ -21,6 +21,7 @@ public partial class ArrastrarViewModel : ViewModelBase
 {
     private NavegationService _navegationService;
     [ObservableProperty] private bool isLevelOk;
+    [ObservableProperty] private bool mostrarBoton = true;
     
     private Point _posI1, _posI2, _posI3, _posI4, _posI5, _posI6;
     private readonly string[] _thumbs = { "I1", "I2", "I3", "I4", "I5", "I6" };
@@ -144,8 +145,7 @@ public partial class ArrastrarViewModel : ViewModelBase
 
             thumb.IsVisible = false;
 
-            if (_correctos == 6)
-                IsLevelOk = true;
+            if (_correctos == 6) IsLevelOk = true;
         }
         else
         {
@@ -209,8 +209,7 @@ public partial class ArrastrarViewModel : ViewModelBase
 
         _nivelActual++;
 
-        if (_nivelActual > 3)
-            _nivelActual = 1;
+        if (_nivelActual == 3) MostrarBoton = false;
 
         ReiniciarNivel(view);
     }
@@ -233,21 +232,5 @@ public partial class ArrastrarViewModel : ViewModelBase
         _correctos = 0;
         _colocados.Clear();
         IsLevelOk = false;
-    }
-    
-    private void ReiniciarThumb(Thumb? thumb, Point pos)
-    {
-        if (thumb == null) return;
-
-        thumb.IsVisible = true;
-
-        if (thumb.RenderTransform is not TranslateTransform t)
-        {
-            t = new TranslateTransform();
-            thumb.RenderTransform = t;
-        }
-
-        t.X = pos.X;
-        t.Y = pos.Y;
     }
 }
