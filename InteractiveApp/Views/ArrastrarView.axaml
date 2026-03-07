@@ -3,7 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:InteractiveApp.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080"
              x:Class="InteractiveApp.Views.ArrastrarView"
              x:DataType="viewModels:ArrastrarViewModel">
     <Design.DataContext>
@@ -18,15 +18,25 @@
         </UserControl.Background>
 
   <Grid>
-    <TextBlock Text="¡Nivel completado!"
-               FontSize="36"
-               FontWeight="Bold"
-               Foreground="Black"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Top"
-               Margin="0,20,0,0"
-               ZIndex="100"
-               IsVisible="{Binding IsLevelOk}"/>
+    <Border Background="AntiqueWhite" BorderBrush="Black"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Width="800" Height="200"
+            Margin="0, 0, 0, 500"
+            ZIndex="100"
+            BorderThickness="2"
+            IsVisible="{Binding IsLevelOk}">
+      <StackPanel HorizontalAlignment="Center"
+                  VerticalAlignment="Center">
+        <TextBlock Text="¡Nivel completado!"
+                   FontSize="56"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Foreground="Black"
+                   ZIndex="110"/>
+      </StackPanel>
+    </Border>
 
     <Grid ShowGridLines="False"
           ColumnDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*"
