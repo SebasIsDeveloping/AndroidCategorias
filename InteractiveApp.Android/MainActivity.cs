@@ -26,32 +26,29 @@ public class MainActivity : AvaloniaMainActivity<App>
     protected override void OnCreate(Bundle? savedInstanceState)
     {
         base.OnCreate(savedInstanceState);
-        AppServices.CameraPermission =
-            new AndroidCameraPermissionService(this);
         AppServices.AudioPlayer = new AndroidAudioPlayer();
         AppServices.MicrophonePermission =
             new AndroidMicrophonePermissionService(this);
         AppServices.SttService =
             new AndroidSystemSttService(this);
         AppServices.AudioRecorder = new AndroidAudioRecorder();
-        AppServices.Camera = new AndroidCameraService(this);
         AppServices.ImageUpload = new ImageUploadService();
         AppServices.WhisperService = new WhisperService();
     }
     
-    protected override void OnActivityResult(int requestCode, Result resultCode, Intent? data)
-    {
-        base.OnActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == 1234)
-        {
-            var camera = AppServices.Camera as AndroidCameraService;
-            camera?.OnResult(resultCode == Result.Ok);
-        }else if (AppServices.SttService is AndroidSystemSttService sys)
-        {
-            sys.OnActivityResult(requestCode, resultCode, data);
-        }
-    }
+    // protected override void OnActivityResult(int requestCode, Result resultCode, Intent? data)
+    // {
+    //     base.OnActivityResult(requestCode, resultCode, data);
+    //
+    //     if (requestCode == 1234)
+    //     {
+    //         var camera = AppServices.Camera as AndroidCameraService;
+    //         camera?.OnResult(resultCode == Result.Ok);
+    //     }else if (AppServices.SttService is AndroidSystemSttService sys)
+    //     {
+    //         sys.OnActivityResult(requestCode, resultCode, data);
+    //     }
+    // }
     
     public override void OnRequestPermissionsResult(
         int requestCode,
@@ -64,12 +61,6 @@ public class MainActivity : AvaloniaMainActivity<App>
             is AndroidMicrophonePermissionService mic)
         {
             mic.OnRequestPermissionsResult(requestCode, grantResults);
-        }
-
-        if (AppServices.CameraPermission
-            is AndroidCameraPermissionService cam)
-        {
-            cam.OnRequestPermissionsResult(requestCode, grantResults);
         }
     }
 
