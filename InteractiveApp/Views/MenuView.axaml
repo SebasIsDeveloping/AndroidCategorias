@@ -3,7 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:InteractiveApp.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080"
              x:Class="InteractiveApp.Views.MenuView"
              x:DataType="viewModels:MenuViewModel">
     <Design.DataContext>
@@ -12,7 +12,9 @@
         <viewModels:MenuViewModel />
     </Design.DataContext>
     <Grid>
-        <Button Content="Arrastrar" HorizontalAlignment="Center"
+        <Button Content="Arrastrar" HorizontalAlignment="Center" Width="500" Height="300"
+                HorizontalContentAlignment="Center" VerticalAlignment="Center" FontSize="54"
+                VerticalContentAlignment="Center"
                 Command="{Binding NavegateToArrastrarCommand}" />
     </Grid>
 </UserControl>

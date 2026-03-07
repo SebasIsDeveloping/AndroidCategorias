@@ -40,6 +40,9 @@ public partial class NavegationService: ObservableObject
     
     partial void OnSelectMenuItemChanged(NavigationViewItem item)
     {
+        if (item.Tag == null)
+            return;
+
         NavigateTo(item.Tag.ToString());
     }
     
@@ -47,6 +50,8 @@ public partial class NavegationService: ObservableObject
     {
         if (tag.Equals(INICIO_VIEW))
         {
+            if (CurrentView is MenuView) return;
+            
             MenuView inicioVista = new MenuView();
             inicioVista.DataContext = new MenuViewModel(this);
             CurrentView = inicioVista;
