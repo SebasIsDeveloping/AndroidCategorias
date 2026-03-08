@@ -62,7 +62,11 @@ public partial class HablarViewModel : ViewModelBase
             Text = "Escuchando…";
 
             Text = await AppServices.SttService.TranscribeAsync(audio);
-
+            AppServices.AudioPlayer
+                            .PlayFromAsset("avares://InteractiveApp/Assets/endrecord.mp3");
+            
+            IsRecord = false;
+            
             if (!string.IsNullOrWhiteSpace(Text) && Text.ToLower().Contains(ingredientes[_nivelActual]))
             {
                 PrimeraPreguntaVisible = false;
@@ -73,11 +77,11 @@ public partial class HablarViewModel : ViewModelBase
             else
             {
                 Text = "Prueba de nuevo";
+                AppServices.AudioPlayer
+                    .PlayFromAsset("avares://InteractiveApp/Assets/audio/points_error.mp3");
             }
 
-            AppServices.AudioPlayer
-                .PlayFromAsset("avares://InteractiveApp/Assets/endrecord.mp3");
-            IsRecord = false;
+            
         }
         catch (Exception ex)
         {
