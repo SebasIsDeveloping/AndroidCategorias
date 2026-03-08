@@ -73,6 +73,8 @@ public partial class HablarViewModel : ViewModelBase
                 SegundaPreguntaVisible = true;
                 PhotoPath = new Bitmap(
                     AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/" + categoriasImg[_nivelActual])));
+                AppServices.AudioPlayer
+                    .PlayFromAsset("avares://InteractiveApp/Assets/audio/points_win.mp3");
             }
             else
             {
@@ -115,6 +117,8 @@ public partial class HablarViewModel : ViewModelBase
 
             if (!string.IsNullOrWhiteSpace(Text) && Text.ToLower().Contains(categorias[_nivelActual]))
             {
+                AppServices.AudioPlayer
+                    .PlayFromAsset("avares://InteractiveApp/Assets/audio/points_win.mp3");
                 IsLevelOk = true;
             }
 
