@@ -22,4 +22,10 @@ public partial class MenuViewModel : ViewModelBase
     {
         _navegationService.NavigateTo(NavegationService.ARRASTRAR_VIEW);
     }
+    
+    [RelayCommand]
+    private void NavegateToHablar()
+    {
+        _navegationService.NavigateTo(NavegationService.HABLAR_VIEW);
+    }
 }

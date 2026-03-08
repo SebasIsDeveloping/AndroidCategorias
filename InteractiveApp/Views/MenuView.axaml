@@ -1,4 +1,4 @@
-﻿<UserControl xmlns="https://github.com/avaloniaui"
+<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -12,17 +12,17 @@
         <viewModels:MenuViewModel />
     </Design.DataContext>
     <Grid>
-        <TextBlock Text="ESCOGE UN JUEGO" FontSize="28" HorizontalAlignment="Center"
-                   Margin="0, 40, 0, 0"/>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="Arrastrar" HorizontalAlignment="Center" Width="150" Height="80"
-                    HorizontalContentAlignment="Center" VerticalAlignment="Center" FontSize="30"
-                    VerticalContentAlignment="Center" Margin="50, 0, 50, 0"
+        <TextBlock Text="ESCOGE UN JUEGO" FontSize="20" HorizontalAlignment="Center"
+                   Margin="0, 20, 0, 0"/>
+        <StackPanel Orientation="Horizontal" Spacing="20" HorizontalAlignment="Center">
+            <Button Content="Arrastrar" HorizontalAlignment="Center" Width="120" Height="30"
+                    HorizontalContentAlignment="Center" VerticalAlignment="Center" FontSize="14" 
+                    VerticalContentAlignment="Center"
                     Command="{Binding NavegateToArrastrarCommand}" />
-            <Button Content="Hablar" HorizontalAlignment="Center" Width="150" Height="80"
-                    HorizontalContentAlignment="Center" VerticalAlignment="Center" FontSize="30"
-                    VerticalContentAlignment="Center" Margin="50, 0, 50, 0"
-                    Command="{Binding NavegateToArrastrarCommand}" />
+            <Button Content="Hablar" HorizontalAlignment="Center" Width="120" Height="30"
+                    HorizontalContentAlignment="Center" VerticalAlignment="Center" FontSize="14" 
+                    VerticalContentAlignment="Center"
+                    Command="{Binding NavegateToHablarCommand}" />
         </StackPanel>
     </Grid>
 </UserControl>
