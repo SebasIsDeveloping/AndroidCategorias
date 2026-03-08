@@ -2,6 +2,7 @@
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
+using Android.Speech;
 using Avalonia;
 using Avalonia.Android;
 using InteractiveApp.Android.Resources;
@@ -26,15 +27,12 @@ public class MainActivity : AvaloniaMainActivity<App>
     protected override void OnCreate(Bundle? savedInstanceState)
     {
         base.OnCreate(savedInstanceState);
-        AppServices.CameraPermission =
-            new AndroidCameraPermissionService(this);
         AppServices.AudioPlayer = new AndroidAudioPlayer();
         AppServices.MicrophonePermission =
             new AndroidMicrophonePermissionService(this);
         AppServices.SttService =
             new AndroidSystemSttService(this);
         AppServices.AudioRecorder = new AndroidAudioRecorder();
-        AppServices.Camera = new AndroidCameraService(this);
         AppServices.ImageUpload = new ImageUploadService();
         AppServices.WhisperService = new WhisperService();
     }
@@ -42,12 +40,7 @@ public class MainActivity : AvaloniaMainActivity<App>
     protected override void OnActivityResult(int requestCode, Result resultCode, Intent? data)
     {
         base.OnActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == 1234)
-        {
-            var camera = AppServices.Camera as AndroidCameraService;
-            camera?.OnResult(resultCode == Result.Ok);
-        }else if (AppServices.SttService is AndroidSystemSttService sys)
+         if (AppServices.SttService is AndroidSystemSttService sys)
         {
             sys.OnActivityResult(requestCode, resultCode, data);
         }
@@ -65,12 +58,33 @@ public class MainActivity : AvaloniaMainActivity<App>
         {
             mic.OnRequestPermissionsResult(requestCode, grantResults);
         }
-
-        if (AppServices.CameraPermission
-            is AndroidCameraPermissionService cam)
-        {
-            cam.OnRequestPermissionsResult(requestCode, grantResults);
-        }
     }
+    
+    // protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+    // {
+    //     base.OnActivityResult(requestCode, resultCode, data);
+    //
+    //     // 2001 es el número que pusiste en StartActivityForResult
+    //     if (requestCode == 2001) 
+    //     {
+    //         if (resultCode == Result.Ok && data != null)
+    //         {
+    //             // Extraemos el texto que ha entendido Google
+    //             var matches = data.GetStringArrayListExtra(RecognizerIntent.ExtraResults);
+    //             if (matches != null && matches.Count > 0)
+    //             {
+    //                 string textoReconocido = matches[0];
+    //             
+    //                 // IMPORTANTE: Aquí le pasamos el texto a tu servicio para que desbloquee el await
+    //                 // Sustituye "AppServices.SttService" por la forma en la que accedes a tu servicio normalmente
+    //                 AppServices.SttService.CompletarTranscripcion(textoReconocido);
+    //                 return;
+    //             }
+    //         }
+    //     
+    //         // Si no entendió nada o el usuario canceló
+    //         AppServices.SttService.CancelarTranscripcion();
+    //     }
+    // }
 
 }

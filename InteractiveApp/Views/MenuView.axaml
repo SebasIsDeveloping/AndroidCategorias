@@ -12,9 +12,9 @@
         <viewModels:MenuViewModel />
     </Design.DataContext>
     <Grid>
-        <Button Content="Arrastrar" HorizontalAlignment="Center" Width="500" Height="300"
+        <Button Content="Hablar" HorizontalAlignment="Center" Width="500" Height="300"
                 HorizontalContentAlignment="Center" VerticalAlignment="Center" FontSize="54"
                 VerticalContentAlignment="Center"
-                Command="{Binding NavegateToArrastrarCommand}" />
+                Command="{Binding NavegateToHablarCommand}" />
     </Grid>
 </UserControl>
