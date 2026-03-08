@@ -13,7 +13,7 @@
         <viewModels:HablarViewModel />
     </Design.DataContext>
     <UserControl.Background>
-        <ImageBrush Stretch="Fill" Source="avares://InteractiveApp/Assets/img/fondo_hablar.png"></ImageBrush>
+        <ImageBrush Stretch="Fill" Source="avares://InteractiveApp/Assets/img/fondos/fondo_hablar.png"></ImageBrush>
     </UserControl.Background>
 
     <Grid ShowGridLines="True">
@@ -61,12 +61,12 @@
                     <Border BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center"
                             BorderThickness="1" CornerRadius="5"
                             IsVisible="{Binding FinNivel}"
-                            Width="125" Height="35">
+                            Width="145" Height="35">
                         <Border BorderBrush="White" HorizontalAlignment="Center" VerticalAlignment="Center"
                                 BorderThickness="3" CornerRadius="2"
-                                Width="123" Height="33">
+                                Width="143" Height="33">
                             <Button Content="Siguiente nivel" FontSize="14"
-                                    Background="DarkSalmon" Width="120" Height="30"
+                                    Background="DarkSalmon" Width="140" Height="30"
                                     HorizontalAlignment="Center" Foreground="White"
                                     HorizontalContentAlignment="Center" FontWeight="DemiBold"
                                     VerticalContentAlignment="Center"
@@ -78,7 +78,21 @@
                 </StackPanel>
             </StackPanel>
         </Border>
-
+        
+        <Button Grid.Column="0"
+                Width="50" Height="40"
+                Margin="10,-300,0,0"
+                Command="{Binding VolverMenuCommand}"
+                Background="Transparent"
+                BorderThickness="0">
+            <Image Source="avares://InteractiveApp/Assets/img/iconos/volver.png"
+                Stretch="Uniform">
+                <Image.RenderTransform>
+                    <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                </Image.RenderTransform>
+            </Image>
+        </Button>
+        
         <StackPanel Grid.Column="0" Spacing="10" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Image Width="160" Source="{Binding PhotoPath}" Margin="0,40,8,0" />
         </StackPanel>
@@ -122,7 +136,7 @@
                                 Spacing="10"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center">
-                        <Image Width="32" Height="32" Source="avares://InteractiveApp/Assets/avalonia-logo.ico" />
+                        <Image Width="32" Height="32" Source="avares://InteractiveApp/Assets/img/iconos/microfono.png" />
                         <TextBlock Text="{Binding Text}" Foreground="Black" FontSize="14" VerticalAlignment="Center" />
                     </StackPanel>
                 </StackPanel>
@@ -153,7 +167,7 @@
                                 Spacing="10"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center">
-                        <Image Width="32" Height="32" Source="avares://InteractiveApp/Assets/avalonia-logo.ico" />
+                        <Image Width="32" Height="32" Source="avares://InteractiveApp/Assets/img/iconos/microfono.png" />
                         <TextBlock Text="{Binding Text}" Foreground="Black" FontSize="14" VerticalAlignment="Center" />
                     </StackPanel>
                     <TextBlock Text="Vegano, normal o postre" Foreground="Black" FontSize="10" FontStyle="Italic"  TextAlignment="Center" />
