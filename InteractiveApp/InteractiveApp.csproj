@@ -25,4 +25,8 @@
         <PackageReference Include="CommunityToolkit.Mvvm" />
         <PackageReference Include="FluentAvaloniaUI" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Assets\img\iconos\" />
+    </ItemGroup>
 </Project>

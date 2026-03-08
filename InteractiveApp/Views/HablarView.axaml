@@ -13,7 +13,7 @@
         <viewModels:HablarViewModel />
     </Design.DataContext>
     <UserControl.Background>
-        <ImageBrush Stretch="Fill" Source="avares://InteractiveApp/Assets/img/fondo_hablar.png"></ImageBrush>
+        <ImageBrush Stretch="Fill" Source="avares://InteractiveApp/Assets/img/fondos/fondo_hablar.png"></ImageBrush>
     </UserControl.Background>
 
     <Grid ShowGridLines="True">
