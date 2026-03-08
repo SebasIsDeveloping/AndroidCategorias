@@ -30,14 +30,14 @@ public partial class HablarViewModel : ViewModelBase
     [ObservableProperty] private bool _segundaPreguntaVisible = false;
 
     [ObservableProperty] private Bitmap _photoPath =
-        new Bitmap(AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/postre_hablar_silueta.png")));
+        new Bitmap(AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/postre/postre_hablar_silueta.png")));
 
     public string[] ingredientes = new[] { "fresa", "pollo", "brócoli" };
 
-    public string[] ingredientesImg = new[] { "postre_hablar_silueta.png", "comida_hablar_silueta.png", "vegano_hablar_silueta.png" };
+    public string[] ingredientesImg = new[] { "postre/postre_hablar_silueta.png", "comida/comida_hablar_silueta.png", "vegano/vegano_hablar_silueta.png" };
 
     public string[] categorias = new[] { "postre", "normal", "vegano" };
-    public string[] categoriasImg = new[] { "postre_hablar.png", "comida_hablar.png", "vegano_hablar.png" };
+    public string[] categoriasImg = new[] { "postre/postre_hablar.png", "comida/comida_hablar.png", "vegano/vegano_hablar.png" };
 
     private int _nivelActual = 0;
 
@@ -53,7 +53,7 @@ public partial class HablarViewModel : ViewModelBase
             }
 
             AppServices.AudioPlayer
-                .PlayFromAsset("avares://InteractiveApp/Assets/record.mp3");
+                .PlayFromAsset("avares://InteractiveApp/Assets/audio/record.mp3");
 
             Text = "Preparando…";
             IsRecord = true;
@@ -63,7 +63,7 @@ public partial class HablarViewModel : ViewModelBase
 
             Text = await AppServices.SttService.TranscribeAsync(audio);
             AppServices.AudioPlayer
-                            .PlayFromAsset("avares://InteractiveApp/Assets/endrecord.mp3");
+                            .PlayFromAsset("avares://InteractiveApp/Assets/audio/endrecord.mp3");
             
             IsRecord = false;
             
@@ -105,7 +105,7 @@ public partial class HablarViewModel : ViewModelBase
             }
 
             AppServices.AudioPlayer
-                .PlayFromAsset("avares://InteractiveApp/Assets/record.mp3");
+                .PlayFromAsset("avares://InteractiveApp/Assets/audio/record.mp3");
 
             Text = "Preparando…";
             IsRecord = true;
@@ -123,7 +123,7 @@ public partial class HablarViewModel : ViewModelBase
             }
 
             AppServices.AudioPlayer
-                .PlayFromAsset("avares://InteractiveApp/Assets/endrecord.mp3");
+                .PlayFromAsset("avares://InteractiveApp/Assets/audio/endrecord.mp3");
             IsRecord = false;
         }
         catch (Exception ex)

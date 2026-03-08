@@ -13,7 +13,7 @@
   </Design.DataContext>
         <UserControl.Background>
                 <ImageBrush Stretch="Fill"
-                            Source="avares://InteractiveApp/Assets/img/fondo_restaurante_completo.png">
+                            Source="avares://InteractiveApp/Assets/img/fondos/fondo_restaurante_completo.png">
                 </ImageBrush>
         </UserControl.Background>
 
