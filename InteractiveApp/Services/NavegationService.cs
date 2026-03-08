@@ -11,6 +11,7 @@ public partial class NavegationService: ObservableObject
 {
     public const string INICIO_VIEW = "Inicio";
     public const string ARRASTRAR_VIEW = "Arrastrar";
+    public const string HABLAR_VIEW = "Hablar";
 
     [ObservableProperty] private ContentControl currentView;
     [ObservableProperty] private NavigationViewItem selectMenuItem;
@@ -18,7 +19,7 @@ public partial class NavegationService: ObservableObject
     
     private NavigationViewItem inicioView;
     private NavigationViewItem arrastrarView;
-    private NavigationViewItem vozView;
+    private NavigationViewItem hablarView;
     private NavigationViewItem cerrarView;
 
     public NavegationService()
@@ -32,9 +33,15 @@ public partial class NavegationService: ObservableObject
         {
             Tag = ARRASTRAR_VIEW
         };
+            
+        hablarView = new NavigationViewItem
+        {
+            Tag = HABLAR_VIEW
+        };
         
         MenuItems.Add(inicioView);
         MenuItems.Add(arrastrarView);
+        MenuItems.Add(hablarView);
         NavigateTo(INICIO_VIEW);
     }
     
@@ -63,6 +70,13 @@ public partial class NavegationService: ObservableObject
             arrastrarVista.DataContext = new ArrastrarViewModel(this);
             CurrentView = arrastrarVista;
             SelectMenuItem = arrastrarView;
+        }
+        else if (tag.Equals(HABLAR_VIEW))
+        {
+            HablarView arrastrarVista = new HablarView();
+            arrastrarVista.DataContext = new HablarViewModel(this);
+            CurrentView = arrastrarVista;
+            SelectMenuItem = hablarView;
         }
     }
 }

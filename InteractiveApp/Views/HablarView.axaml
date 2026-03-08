@@ -2,60 +2,64 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="400"
              xmlns:viewModels="clr-namespace:InteractiveApp.ViewModels"
              x:DataType="viewModels:HablarViewModel"
              x:Class="InteractiveApp.Views.HablarView">
-    
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <viewModels:HablarViewModel />
+    </Design.DataContext>
     <UserControl.Background>
-        <ImageBrush Stretch="Fill" Source="avares://InteractiveApp/Assets/img/fondo_hablarV2.png"></ImageBrush>
+        <ImageBrush Stretch="Fill" Source="avares://InteractiveApp/Assets/img/fondo_hablar.png"></ImageBrush>
     </UserControl.Background>
     
     <Grid ShowGridLines="True">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="960" />
-            <ColumnDefinition Width="960" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Border Background="AntiqueWhite" BorderBrush="Black"
-                BoxShadow="10 10 5 0 #80000000"
+        <Border Background="BlanchedAlmond" BorderBrush="Black"
+                BoxShadow="5 5 5 0 #80000000"
                 HorizontalAlignment="Center"
                 CornerRadius="20" Grid.Column="1"
                 Padding="20, 10"
                 VerticalAlignment="Center"
-                Width="800" Height="250"
+                Width="420" Height="140"
                 Margin="0, 50, 150, 0"
                 ZIndex="100"
                 BorderThickness="2"
                 IsVisible="{Binding IsLevelOk}"
                 >
-            <StackPanel HorizontalAlignment="Center"
+            <StackPanel HorizontalAlignment="Center" Spacing="20"
                         VerticalAlignment="Center">
                 <TextBlock Text="¡Nivel completado!"
-                           FontSize="56"
+                           FontSize="26"
                            FontWeight="Bold"
                            HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Margin="0,0, 0, 0"
+                           VerticalAlignment="Center" 
                            Foreground="Black"
                            ZIndex="110"/>
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center"
-                            HorizontalAlignment="Center" Margin="0, 40, 40, 0">
-                    <Button Content="Menu" Margin="30, 0, 50, 0"
-                            FontSize="30" Padding="20, 10" CornerRadius="10"
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="20"
+                            HorizontalAlignment="Center" >
+                    <Button Content="Menu"
+                            FontSize="18" Padding="10, 5" CornerRadius="10"
                             Background="MediumTurquoise" Command="{Binding VolverMenuCommand}"/>
-                    <Button Content="Siguiente nivel" Margin="50, 0, 0, 0"
-                            Padding="20, 10"
+                    <Button Content="Siguiente nivel" 
+                            Padding="10, 5"
                             Background="MediumSpringGreen"
-                            FontSize="30" CornerRadius="10"
+                            FontSize="18" CornerRadius="10"
                             Command="{Binding SiguienteNivelCommand}"/>
                 </StackPanel>
             </StackPanel>
         </Border>
-        <Border Background="BlanchedAlmond" Margin="0,70,225,0"
+        
+        <Border Background="BlanchedAlmond" Margin="0,35,75,0"
                 BorderBrush="Black" Grid.Column="1"
-                BorderThickness="5"
+                BorderThickness="2"
                 CornerRadius="20"
-                Height="600" Width="630" BoxShadow="10 10 5 0 #80000000"
+                Height="200" Width="230" BoxShadow="5 5 5 0 #80000000"
                 Padding="20">
         <StackPanel 
                     Orientation="Vertical"
@@ -66,29 +70,29 @@
                     >
 
             <!-- Elemento 1 -->
-            <StackPanel Orientation="Vertical"
-                        Spacing="10" 
+            <StackPanel Orientation="Vertical" IsVisible="{Binding PrimeraPreguntaVisible}"
+                        Spacing="5" 
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center">
-                <TextBlock Text="¿Qué ingrediente falta?"  FontSize="40" FontWeight="DemiBold" VerticalAlignment="Center"/>
-                <Button Content="Escuchar" FontSize="35"
+                <TextBlock Text="¿Qué ingrediente falta?"  FontSize="16" FontWeight="DemiBold" VerticalAlignment="Center"/>
+                <Button Content="Escuchar" FontSize="14"
                         HorizontalAlignment="Center"
                         HorizontalContentAlignment="Center"
                         VerticalContentAlignment="Center"
                         Command="{Binding Record1Command}" 
-                        Padding="30, 10"
+                        Padding="10, 5"
                        />
                 <StackPanel Orientation="Horizontal"
-                            Spacing="20" 
+                            Spacing="10" 
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center">
-                    <Image Width="80" Height="80" Source="avares://InteractiveApp/Assets/avalonia-logo.ico"/>
+                    <Image Width="32" Height="32" Source="avares://InteractiveApp/Assets/avalonia-logo.ico"/>
                     <TextBlock Text="{Binding Text}"   FontSize="40" VerticalAlignment="Center"/>
                 </StackPanel>
             </StackPanel>
 
             <!-- Elemento 2 -->
-            <StackPanel Orientation="Vertical" IsVisible="{Binding PreguntaVisible}"
+            <StackPanel Orientation="Vertical" IsVisible="{Binding SegundaPreguntaVisible}"
                         Spacing="10" 
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center">

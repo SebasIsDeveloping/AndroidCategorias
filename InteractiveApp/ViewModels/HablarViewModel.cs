@@ -7,17 +7,23 @@ using InteractiveApp.Services;
 namespace InteractiveApp.ViewModels;
 
 public partial class HablarViewModel : ViewModelBase
-{
+{    
+    private NavegationService _navegationService;
+    public HablarViewModel(NavegationService navegationService)
+    {
+        _navegationService = navegationService;
+    }
     public HablarViewModel()
     {
-
+        IsLevelOk = false;
     }
 
-    [ObservableProperty] private string _text = "App para reconocimiento de voz";
+    [ObservableProperty] private string _text = "";
     [ObservableProperty] private string _photoPath = string.Empty;
     [ObservableProperty] private bool _isRecord;
-    [ObservableProperty] private bool isLevelOk;
-    [ObservableProperty] private bool preguntaVisible;
+    [ObservableProperty] private bool _isLevelOk = false;
+    [ObservableProperty] private bool _segundaPreguntaVisible = false;
+    [ObservableProperty] private bool _primeraPreguntaVisible = false;
     
     [RelayCommand]
     public async Task Record1()
@@ -40,9 +46,10 @@ public partial class HablarViewModel : ViewModelBase
         
             Text = await AppServices.SttService.TranscribeAsync(audio);
         
-            if (!string.IsNullOrWhiteSpace(Text) && Text.ToLower().Contains("perro"))
+            if (!string.IsNullOrWhiteSpace(Text) && Text.ToLower().Contains("pollo"))
             {
-                PreguntaVisible = true; 
+                PrimeraPreguntaVisible = false; 
+                SegundaPreguntaVisible = true; 
             }
         
             AppServices.AudioPlayer
@@ -78,11 +85,11 @@ public partial class HablarViewModel : ViewModelBase
         
             Text = await AppServices.SttService.TranscribeAsync(audio);
         
-            if (!string.IsNullOrWhiteSpace(Text) && Text.ToLower().Contains("postre"))
+            if (!string.IsNullOrWhiteSpace(Text) && Text.ToLower().Contains("perro"))
             {
-                PreguntaVisible = true; 
+                IsLevelOk= true;
             }
-        
+            
             AppServices.AudioPlayer
                 .PlayFromAsset("avares://InteractiveApp/Assets/endrecord.mp3");
             IsRecord = false;
