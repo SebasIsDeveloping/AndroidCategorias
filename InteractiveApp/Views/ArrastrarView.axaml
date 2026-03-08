@@ -18,6 +18,20 @@
         </UserControl.Background>
 
   <Grid>
+    <Button Grid.Column="0"
+            Width="50" Height="40"
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            Margin="30, 10, 0, 0"
+            Command="{Binding VolverMenuCommand}"
+            Background="Transparent"
+            BorderThickness="0">
+      <Image Source="avares://InteractiveApp/Assets/img/iconos/volver.png"
+             Stretch="Uniform">
+        <Image.RenderTransform>
+          <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+        </Image.RenderTransform>
+      </Image>
+    </Button>
     <Grid ShowGridLines="False"
           ColumnDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*"
           RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*">
@@ -52,7 +66,7 @@
         </Interaction.Behaviors>
         <Thumb.Template>
           <ControlTemplate>
-            <Image Source="avares://InteractiveApp/Assets/img/postre/postre1.png"
+            <Image Source="{Binding Img1}"
                    Stretch="Uniform">
               <Image.RenderTransform>
                 <ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -73,7 +87,7 @@
         </Interaction.Behaviors>
         <Thumb.Template>
           <ControlTemplate>
-            <Image Source="avares://InteractiveApp/Assets/img/comida/comida1.png"
+            <Image Source="{Binding Img2}"
                    Stretch="Uniform">
               <Image.RenderTransform>
                 <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
@@ -94,7 +108,7 @@
         </Interaction.Behaviors>
         <Thumb.Template>
           <ControlTemplate>
-            <Image Source="avares://InteractiveApp/Assets/img/vegano/vegano1.png"
+            <Image Source="{Binding Img3}"
                    Stretch="Uniform">
               <Image.RenderTransform>
                 <ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -115,7 +129,7 @@
         </Interaction.Behaviors>
         <Thumb.Template>
           <ControlTemplate>
-            <Image Source="avares://InteractiveApp/Assets/img/postre/postre2.png"
+            <Image Source="{Binding Img4}"
                    Stretch="Uniform">
               <Image.RenderTransform>
                 <ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -136,7 +150,7 @@
         </Interaction.Behaviors>
         <Thumb.Template>
           <ControlTemplate>
-            <Image Source="avares://InteractiveApp/Assets/img/comida/comida2.png"
+            <Image Source="{Binding Img5}"
                    Stretch="Uniform">
               <Image.RenderTransform>
                 <ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -157,7 +171,7 @@
         </Interaction.Behaviors>
         <Thumb.Template>
           <ControlTemplate>
-            <Image Source="avares://InteractiveApp/Assets/img/vegano/vegano2.png"
+            <Image Source="{Binding Img6}"
                    Stretch="Uniform">
               <Image.RenderTransform>
                 <ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -168,36 +182,59 @@
       </Thumb>
     </Grid>
     <Border Background="BlanchedAlmond" BorderBrush="Black"
-            BoxShadow="5 5 5 0 #80000000"
-            HorizontalAlignment="Center"
-            CornerRadius="20"
-            Padding="20, 10"
-            VerticalAlignment="Center"
-            Width="400" Height="150"
-            ZIndex="100"
-            BorderThickness="2"
-            IsVisible="{Binding IsLevelOk}">
-      <StackPanel HorizontalAlignment="Center" Spacing="20"
-                  VerticalAlignment="Center">
-        <TextBlock Text="¡Nivel completado!"
-                   FontSize="26"
-                   FontWeight="Bold"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center" 
-                   Foreground="Black"
-                   ZIndex="110"/>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="20"
-                    HorizontalAlignment="Center" >
-          <Button Content="Menu"
-                  FontSize="18" Padding="10, 5" CornerRadius="10"
-                  Background="MediumTurquoise" Command="{Binding VolverMenuCommand}"/>
-          <Button Content="Siguiente nivel" 
-                  Padding="10, 5"
-                  Background="MediumSpringGreen"
-                  FontSize="18" CornerRadius="10"
-                  Command="{Binding SiguienteNivelCommand}"/>
-        </StackPanel>
-      </StackPanel>
-    </Border>
+                BoxShadow="5 5 5 0 #80000000"
+                HorizontalAlignment="Center"
+                CornerRadius="20"
+                Padding="20, 10"
+                VerticalAlignment="Center"
+                Width="420" Height="140"
+                ZIndex="100"
+                BorderThickness="2"
+                IsVisible="{Binding IsLevelOk}">
+            <StackPanel HorizontalAlignment="Center" Spacing="20"
+                        VerticalAlignment="Center">
+                <TextBlock Text="¡Nivel completado!"
+                           FontSize="26"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Foreground="Black"
+                           ZIndex="110" />
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="20"
+                            HorizontalAlignment="Center">
+                    <Border BorderBrush="Black"
+                            BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                            CornerRadius="5" Width="90" Height="35">
+                        <Border BorderBrush="White" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                BorderThickness="3"
+                                CornerRadius="2" Width="88" Height="33">
+                            <Button Content="Ir a menú" FontSize="14"
+                                    Background="DarkSalmon" Width="85" Height="30"
+                                    HorizontalAlignment="Center" Foreground="White"
+                                    HorizontalContentAlignment="Center" FontWeight="DemiBold"
+                                    VerticalContentAlignment="Center"
+                                    Command="{Binding VolverMenuCommand}"
+                                    Padding="10, 5" />
+                        </Border>
+                    </Border>
+                    <Border BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center"
+                            BorderThickness="1" CornerRadius="5"
+                            IsVisible="{Binding MostrarBoton}"
+                            Width="145" Height="35">
+                        <Border BorderBrush="White" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                BorderThickness="3" CornerRadius="2"
+                                Width="143" Height="33">
+                            <Button Content="Siguiente nivel" FontSize="14"
+                                    Background="DarkSalmon" Width="140" Height="30"
+                                    HorizontalAlignment="Center" Foreground="White"
+                                    HorizontalContentAlignment="Center" FontWeight="DemiBold"
+                                    VerticalContentAlignment="Center"
+                                    Command="{Binding SiguienteNivelCommand}"
+                                    Padding="10, 5" />
+                        </Border>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+        </Border>
   </Grid>
 </UserControl>
