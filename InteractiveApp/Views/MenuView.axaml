@@ -13,54 +13,46 @@
     </Design.DataContext>
     <UserControl.Background>
         <ImageBrush Stretch="Fill"
-                    Source="avares://InteractiveApp/Assets/img/fondos/fondo_menu.png">
+                    Source="avares://InteractiveApp/Assets/img/fondos/fondo_menuV3.png">
         </ImageBrush>
     </UserControl.Background>
     <Grid>
-        <StackPanel Margin="0, 50, 0, 0" Spacing="30">
-            <StackPanel Margin="0, 20, 0, 0" Spacing="60">
-                <TextBlock Text="!Bienvenido a nuestro restaurante!" FontWeight="DemiBold" FontStyle="Italic"
-                           FontSize="28" HorizontalAlignment="Center" />
-                <TextBlock Text="¿Qué quieres hacer?" FontSize="20" HorizontalAlignment="Center" />
-            </StackPanel>
-
-
-            <StackPanel Orientation="Horizontal" Spacing="50" HorizontalAlignment="Center">
-                <Border BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center"
-                        BorderThickness="1" CornerRadius="5"
-                        Width="195" Height="50">
-                    <Border BorderBrush="White" HorizontalAlignment="Center" VerticalAlignment="Center"
-                            BorderThickness="3" CornerRadius="2"
-                            Background="PeachPuff"
-                            Width="193" Height="48">
-                        <Button Content="Jugar a arrastrar" FontSize="20"
-                                Background="DarkSalmon" Width="190" Height="45"
-                                HorizontalAlignment="Center" Foreground="White"
-                                HorizontalContentAlignment="Center" FontWeight="DemiBold"
-                                VerticalContentAlignment="Center"
-                                Command="{Binding NavegateToArrastrarCommand}"
-                                Padding="10, 5" />
-                    </Border>
+        <StackPanel Orientation="Vertical" Margin="0, 210, 0, 0" Spacing="20" HorizontalAlignment="Center">
+            <Border BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    BorderThickness="1" CornerRadius="5"
+                    Width="195" Height="50">
+                <Border BorderBrush="White" HorizontalAlignment="Center" VerticalAlignment="Center"
+                        BorderThickness="3" CornerRadius="2"
+                        Background="PeachPuff"
+                        Width="193" Height="48">
+                    <Button Content="Jugar a arrastrar" FontSize="20"
+                            Background="DarkSalmon" Width="190" Height="45"
+                            HorizontalAlignment="Center" Foreground="White"
+                            HorizontalContentAlignment="Center" FontWeight="DemiBold"
+                            VerticalContentAlignment="Center"
+                            Command="{Binding NavegateToArrastrarCommand}"
+                            Padding="10, 5" />
                 </Border>
+            </Border>
 
-                <Border BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center"
-                        BorderThickness="1" CornerRadius="5"
-                        Width="195" Height="50">
-                    <Border BorderBrush="White" HorizontalAlignment="Center" VerticalAlignment="Center"
-                            BorderThickness="3" CornerRadius="2"
-                            Background="PeachPuff"
-                            Width="193" Height="48">
-                        <Button Content="Jugar con la voz" FontSize="20"
-                                Background="DarkSalmon" Width="190" Height="45"
-                                HorizontalAlignment="Center" Foreground="White"
-                                HorizontalContentAlignment="Center" FontWeight="DemiBold"
-                                VerticalContentAlignment="Center"
-                                Command="{Binding NavegateToHablarCommand}"
-                                Padding="10, 5" />
-                    </Border>
+            <Border BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    BorderThickness="1" CornerRadius="5"
+                    Width="195" Height="50">
+                <Border BorderBrush="White" HorizontalAlignment="Center" VerticalAlignment="Center"
+                        BorderThickness="3" CornerRadius="2"
+                        Background="PeachPuff"
+                        Width="193" Height="48">
+                    <Button Content="Jugar con la voz" FontSize="20"
+                            Background="DarkSalmon" Width="190" Height="45"
+                            HorizontalAlignment="Center" Foreground="White"
+                            HorizontalContentAlignment="Center" FontWeight="DemiBold"
+                            VerticalContentAlignment="Center"
+                            Command="{Binding NavegateToHablarCommand}"
+                            Padding="10, 5" />
                 </Border>
+            </Border>
 
-            </StackPanel>
         </StackPanel>
+
     </Grid>
 </UserControl>
