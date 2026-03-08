@@ -18,6 +18,20 @@
         </UserControl.Background>
 
   <Grid>
+    <Button Grid.Column="0"
+            Width="50" Height="40"
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            Margin="30, 10, 0, 0"
+            Command="{Binding VolverMenuCommand}"
+            Background="Transparent"
+            BorderThickness="0">
+      <Image Source="avares://InteractiveApp/Assets/img/iconos/volver.png"
+             Stretch="Uniform">
+        <Image.RenderTransform>
+          <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+        </Image.RenderTransform>
+      </Image>
+    </Button>
     <Grid ShowGridLines="False"
           ColumnDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*"
           RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*">
