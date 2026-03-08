@@ -12,9 +12,17 @@
         <viewModels:MenuViewModel />
     </Design.DataContext>
     <Grid>
-        <Button Content="Arrastrar" HorizontalAlignment="Center" Width="300" Height="150"
-                HorizontalContentAlignment="Center" VerticalAlignment="Center" FontSize="54"
-                VerticalContentAlignment="Center"
-                Command="{Binding NavegateToArrastrarCommand}" />
+        <TextBlock Text="ESCOGE UN JUEGO" FontSize="28" HorizontalAlignment="Center"
+                   Margin="0, 40, 0, 0"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Arrastrar" HorizontalAlignment="Center" Width="150" Height="80"
+                    HorizontalContentAlignment="Center" VerticalAlignment="Center" FontSize="30"
+                    VerticalContentAlignment="Center" Margin="50, 0, 50, 0"
+                    Command="{Binding NavegateToArrastrarCommand}" />
+            <Button Content="Hablar" HorizontalAlignment="Center" Width="150" Height="80"
+                    HorizontalContentAlignment="Center" VerticalAlignment="Center" FontSize="30"
+                    VerticalContentAlignment="Center" Margin="50, 0, 50, 0"
+                    Command="{Binding NavegateToArrastrarCommand}" />
+        </StackPanel>
     </Grid>
 </UserControl>
