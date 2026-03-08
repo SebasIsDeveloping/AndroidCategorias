@@ -5,6 +5,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="400"
              xmlns:viewModels="clr-namespace:InteractiveApp.ViewModels"
              x:DataType="viewModels:HablarViewModel"
+             xmlns:vm="using:InteractiveApp.ViewModels"
              x:Class="InteractiveApp.Views.HablarView">
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -14,7 +15,7 @@
     <UserControl.Background>
         <ImageBrush Stretch="Fill" Source="avares://InteractiveApp/Assets/img/fondo_hablar.png"></ImageBrush>
     </UserControl.Background>
-    
+
     <Grid ShowGridLines="True">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -30,91 +31,136 @@
                 Margin="0, 50, 150, 0"
                 ZIndex="100"
                 BorderThickness="2"
-                IsVisible="{Binding IsLevelOk}"
-                >
+                IsVisible="{Binding IsLevelOk}">
             <StackPanel HorizontalAlignment="Center" Spacing="20"
                         VerticalAlignment="Center">
                 <TextBlock Text="¡Nivel completado!"
                            FontSize="26"
                            FontWeight="Bold"
                            HorizontalAlignment="Center"
-                           VerticalAlignment="Center" 
+                           VerticalAlignment="Center"
                            Foreground="Black"
-                           ZIndex="110"/>
+                           ZIndex="110" />
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="20"
-                            HorizontalAlignment="Center" >
-                    <Button Content="Menu"
-                            FontSize="18" Padding="10, 5" CornerRadius="10"
-                            Background="MediumTurquoise" Command="{Binding VolverMenuCommand}"/>
-                    <Button Content="Siguiente nivel" 
-                            Padding="10, 5"
-                            Background="MediumSpringGreen"
-                            FontSize="18" CornerRadius="10"
-                            Command="{Binding SiguienteNivelCommand}"/>
+                            HorizontalAlignment="Center">
+                    <Border BorderBrush="Black"
+                            BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                            CornerRadius="5" Width="90" Height="35">
+                        <Border BorderBrush="White" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                BorderThickness="3"
+                                CornerRadius="2" Width="88" Height="33">
+                            <Button Content="Ir a menú" FontSize="14"
+                                    Background="DarkSalmon" Width="85" Height="30"
+                                    HorizontalAlignment="Center" Foreground="White"
+                                    HorizontalContentAlignment="Center" FontWeight="DemiBold"
+                                    VerticalContentAlignment="Center"
+                                    Command="{Binding VolverMenuCommand}"
+                                    Padding="10, 5" />
+                        </Border>
+                    </Border>
+                    <Border BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center"
+                            BorderThickness="1" CornerRadius="5"
+                            IsVisible="{Binding FinNivel}"
+                            Width="125" Height="35">
+                        <Border BorderBrush="White" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                BorderThickness="3" CornerRadius="2"
+                                Width="123" Height="33">
+                            <Button Content="Siguiente nivel" FontSize="14"
+                                    Background="DarkSalmon" Width="120" Height="30"
+                                    HorizontalAlignment="Center" Foreground="White"
+                                    HorizontalContentAlignment="Center" FontWeight="DemiBold"
+                                    VerticalContentAlignment="Center"
+                                    Command="{Binding SiguienteNivelCommand}"
+                                    Padding="10, 5" />
+                        </Border>
+                    </Border>
+
                 </StackPanel>
             </StackPanel>
         </Border>
-        
-        <Border Background="BlanchedAlmond" Margin="0,35,75,0"
+
+        <StackPanel Grid.Column="0" Spacing="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image Width="160" Source="{Binding PhotoPath}" Margin="0,40,8,0" />
+        </StackPanel>
+
+        <Border Background="BlanchedAlmond" Margin="0,55,65,0"
                 BorderBrush="Black" Grid.Column="1"
                 BorderThickness="2"
                 CornerRadius="20"
                 Height="200" Width="230" BoxShadow="5 5 5 0 #80000000"
                 Padding="20">
-        <StackPanel 
-                    Orientation="Vertical"
-                    Spacing="70"
-                    Margin="0,0,0,20"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    >
 
-            <!-- Elemento 1 -->
-            <StackPanel Orientation="Vertical" 
-                        Spacing="5" IsVisible="{Binding PrimeraPreguntaVisible}"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center">
-                <TextBlock Text="¿Qué ingrediente falta?"  FontSize="16" FontWeight="DemiBold" VerticalAlignment="Center"/>
-                <Button Content="Escuchar" FontSize="14"
-                        HorizontalAlignment="Center"
-                        HorizontalContentAlignment="Center"
-                        VerticalContentAlignment="Center"
-                        Command="{Binding Record1Command}" 
-                        Padding="10, 5"
-                       />
-                <StackPanel Orientation="Horizontal"
-                            Spacing="10" 
+            <StackPanel
+                Orientation="Vertical"
+                Spacing="70"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+
+                <!-- Elemento 1 -->
+                <StackPanel Orientation="Vertical"
+                            Spacing="5" IsVisible="{Binding PrimeraPreguntaVisible}"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center">
-                    <Image Width="32" Height="32" Source="avares://InteractiveApp/Assets/avalonia-logo.ico"/>
-                    <TextBlock Text="{Binding Text}"   FontSize="14" VerticalAlignment="Center"/>
+                    <TextBlock Text="¿Qué ingrediente falta?" Foreground="Black"
+                               FontSize="16" FontWeight="DemiBold" VerticalAlignment="Center" />
+                    <Border BorderBrush="Black"
+                            BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                            CornerRadius="5" Width="89" Height="35">
+                        <Border BorderBrush="White" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                BorderThickness="3"
+                                CornerRadius="2" Width="87" Height="33">
+                            <Button Content="Escuchar" FontSize="14"
+                                    Background="DarkSalmon" Width="85" Height="30"
+                                    HorizontalAlignment="Center" Foreground="White"
+                                    HorizontalContentAlignment="Center" FontWeight="DemiBold"
+                                    VerticalContentAlignment="Center"
+                                    Command="{Binding Record1Command}"
+                                    Padding="10, 5" />
+                        </Border>
+                    </Border>
+                    <StackPanel Orientation="Horizontal"
+                                Spacing="10"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <Image Width="32" Height="32" Source="avares://InteractiveApp/Assets/avalonia-logo.ico" />
+                        <TextBlock Text="{Binding Text}" Foreground="Black" FontSize="14" VerticalAlignment="Center" />
+                    </StackPanel>
                 </StackPanel>
-            </StackPanel>
 
-            <!-- Elemento 2 -->
-            <StackPanel Orientation="Vertical" 
-                        Spacing="10" IsVisible="{Binding SegundaPreguntaVisible}"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center">
-                <TextBlock Text="¿A qué categoría pertenece?" TextAlignment="Center" TextWrapping="Wrap"  FontSize="16" FontWeight="DemiBold" VerticalAlignment="Center"/>
-                <Button Content="Escuchar" FontSize="14"
-                        HorizontalAlignment="Center"
-                        HorizontalContentAlignment="Center"
-                        VerticalContentAlignment="Center"
-                        Command="{Binding Record1Command}" 
-                        Padding="10, 5"
-                />
-                <StackPanel Orientation="Horizontal"
-                            Spacing="10" 
+                <!-- Elemento 2 -->
+                <StackPanel Orientation="Vertical"
+                            Spacing="10" IsVisible="{Binding SegundaPreguntaVisible}"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center">
-                    <Image Width="32" Height="32" Source="avares://InteractiveApp/Assets/avalonia-logo.ico"/>
-                    <TextBlock Text="{Binding Text}"   FontSize="14" VerticalAlignment="Center"/>
+                    <TextBlock Text="¿A qué categoría pertenece?" TextAlignment="Center" Foreground="Black"
+                               TextWrapping="Wrap" FontSize="16" FontWeight="DemiBold" VerticalAlignment="Center" />
+                    <Border BorderBrush="Black"
+                            BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                            CornerRadius="5" Width="89" Height="35">
+                        <Border BorderBrush="White" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                BorderThickness="3"
+                                CornerRadius="2" Width="87" Height="33">
+                            <Button Content="Escuchar" FontSize="14"
+                                    Background="DarkSalmon" Width="85" Height="30"
+                                    HorizontalAlignment="Center" Foreground="White"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    Command="{Binding Record2Command}"
+                                    Padding="10, 5" />
+                        </Border>
+                    </Border>
+                    <StackPanel Orientation="Horizontal"
+                                Spacing="10"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <Image Width="32" Height="32" Source="avares://InteractiveApp/Assets/avalonia-logo.ico" />
+                        <TextBlock Text="{Binding Text}" Foreground="Black" FontSize="14" VerticalAlignment="Center" />
+                    </StackPanel>
+                    <TextBlock Text="Vegano, normal o postre" Foreground="Black" FontSize="10" FontStyle="Italic"  TextAlignment="Center" />
                 </StackPanel>
+
             </StackPanel>
 
-        </StackPanel>
-        
-            </Border>
+        </Border>
     </Grid>
 </UserControl>
