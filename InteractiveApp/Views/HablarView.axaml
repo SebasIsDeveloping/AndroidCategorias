@@ -146,7 +146,7 @@
                             Spacing="10" IsVisible="{Binding SegundaPreguntaVisible}"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center">
-                    <TextBlock Text="¿A qué categoría pertenece?" TextAlignment="Center" Foreground="Black"
+                    <TextBlock Text="¿A qué categoría pertenece éste plato?" TextAlignment="Center" Foreground="Black"
                                TextWrapping="Wrap" FontSize="16" FontWeight="DemiBold" VerticalAlignment="Center" />
                     <Border BorderBrush="Black"
                             BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center"
@@ -170,7 +170,7 @@
                         <Image Width="32" Height="32" Source="avares://InteractiveApp/Assets/img/iconos/microfono.png" />
                         <TextBlock Text="{Binding Text}" Foreground="Black" FontSize="14" VerticalAlignment="Center" />
                     </StackPanel>
-                    <TextBlock Text="Vegano, normal o postre" Foreground="Black" FontSize="10" FontStyle="Italic"  TextAlignment="Center" />
+                    <TextBlock Text="Pista: vegano, normal o postre" Foreground="Black" FontSize="10" FontStyle="Italic"  TextAlignment="Center" />
                 </StackPanel>
 
             </StackPanel>

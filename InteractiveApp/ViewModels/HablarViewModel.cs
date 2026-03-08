@@ -62,8 +62,6 @@ public partial class HablarViewModel : ViewModelBase
             Text = "Escuchando…";
 
             Text = await AppServices.SttService.TranscribeAsync(audio);
-            AppServices.AudioPlayer
-                            .PlayFromAsset("avares://InteractiveApp/Assets/audio/endrecord.mp3");
             
             IsRecord = false;
             
