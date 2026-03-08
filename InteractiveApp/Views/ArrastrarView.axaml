@@ -44,7 +44,7 @@
       <Thumb Name="I1" Tag="HuecoP" ZIndex="1" Grid.Column="8" Grid.Row="4" Grid.ColumnSpan="5" Grid.RowSpan="5">
         <Interaction.Behaviors>
           <EventTriggerBehavior EventName="DragDelta">
-            <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding ScrollCommand}" />
+            <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragDeltaCommand}" />
           </EventTriggerBehavior>
           <EventTriggerBehavior EventName="DragCompleted">
             <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragCompletedCommand}" />
@@ -52,7 +52,12 @@
         </Interaction.Behaviors>
         <Thumb.Template>
           <ControlTemplate>
-            <Border Background="Crimson" Width="200" Height="175"/>
+            <Image Source="avares://InteractiveApp/Assets/img/postre/postre1.png"
+                   Stretch="Uniform">
+              <Image.RenderTransform>
+                <ScaleTransform ScaleX="1.4" ScaleY="1.4"/>
+              </Image.RenderTransform>
+            </Image>
           </ControlTemplate>
         </Thumb.Template>
       </Thumb>
@@ -60,7 +65,7 @@
       <Thumb Name="I2" Tag="HuecoC" ZIndex="1" Grid.Column="19" Grid.Row="4" Grid.ColumnSpan="5" Grid.RowSpan="5">
         <Interaction.Behaviors>
           <EventTriggerBehavior EventName="DragDelta">
-            <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding ScrollCommand}" />
+            <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragDeltaCommand}" />
           </EventTriggerBehavior>
           <EventTriggerBehavior EventName="DragCompleted">
             <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragCompletedCommand}" />
@@ -68,7 +73,13 @@
         </Interaction.Behaviors>
         <Thumb.Template>
           <ControlTemplate>
-            <Border Background="Orange" Width="200" Height="175"/>
+            <Image Source="avares://InteractiveApp/Assets/img/comida/comida1.png"
+                   Stretch="Uniform"
+                   Width="50">
+              <Image.RenderTransform>
+                <ScaleTransform ScaleX="1.4" ScaleY="1.4"/>
+              </Image.RenderTransform>
+            </Image>
           </ControlTemplate>
         </Thumb.Template>
       </Thumb>
@@ -76,7 +87,7 @@
       <Thumb Name="I3" Tag="HuecoV" ZIndex="1" Grid.Column="29" Grid.Row="4" Grid.ColumnSpan="5" Grid.RowSpan="5">
         <Interaction.Behaviors>
           <EventTriggerBehavior EventName="DragDelta">
-            <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding ScrollCommand}" />
+            <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragDeltaCommand}" />
           </EventTriggerBehavior>
           <EventTriggerBehavior EventName="DragCompleted">
             <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragCompletedCommand}" />
@@ -84,7 +95,12 @@
         </Interaction.Behaviors>
         <Thumb.Template>
           <ControlTemplate>
-            <Border Background="Cyan" Width="200" Height="175"/>
+            <Image Source="avares://InteractiveApp/Assets/img/vegano/vegano1.png"
+                   Stretch="Uniform">
+              <Image.RenderTransform>
+                <ScaleTransform ScaleX="1.4" ScaleY="1.4"/>
+              </Image.RenderTransform>
+            </Image>
           </ControlTemplate>
         </Thumb.Template>
       </Thumb>
@@ -92,7 +108,7 @@
       <Thumb Name="I4" Tag="HuecoP" ZIndex="1" Grid.Column="8" Grid.Row="12" Grid.ColumnSpan="5" Grid.RowSpan="5">
         <Interaction.Behaviors>
           <EventTriggerBehavior EventName="DragDelta">
-            <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding ScrollCommand}" />
+            <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragDeltaCommand}" />
           </EventTriggerBehavior>
           <EventTriggerBehavior EventName="DragCompleted">
             <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragCompletedCommand}" />
@@ -100,7 +116,12 @@
         </Interaction.Behaviors>
         <Thumb.Template>
           <ControlTemplate>
-            <Border Background="Blue" Width="200" Height="175"/>
+            <Image Source="avares://InteractiveApp/Assets/img/postre/postre2.png"
+                   Stretch="Uniform">
+              <Image.RenderTransform>
+                <ScaleTransform ScaleX="1.4" ScaleY="1.4"/>
+              </Image.RenderTransform>
+            </Image>
           </ControlTemplate>
         </Thumb.Template>
       </Thumb>
@@ -108,7 +129,7 @@
       <Thumb Name="I5" Tag="HuecoC" ZIndex="1" Grid.Column="19" Grid.Row="12" Grid.ColumnSpan="5" Grid.RowSpan="5">
         <Interaction.Behaviors>
           <EventTriggerBehavior EventName="DragDelta">
-            <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding ScrollCommand}" />
+            <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragDeltaCommand}" />
           </EventTriggerBehavior>
           <EventTriggerBehavior EventName="DragCompleted">
             <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragCompletedCommand}" />
@@ -116,7 +137,13 @@
         </Interaction.Behaviors>
         <Thumb.Template>
           <ControlTemplate>
-            <Border Background="GreenYellow" Width="200" Height="175"/>
+            <Image Source="avares://InteractiveApp/Assets/img/comida/comida2.png"
+                   Stretch="Uniform"
+                   Width="70">
+              <Image.RenderTransform>
+                <ScaleTransform ScaleX="1.4" ScaleY="1.4"/>
+              </Image.RenderTransform>
+            </Image>
           </ControlTemplate>
         </Thumb.Template>
       </Thumb>
@@ -124,7 +151,7 @@
       <Thumb Name="I6" Tag="HuecoV" ZIndex="1" Grid.Column="29" Grid.Row="12" Grid.ColumnSpan="5" Grid.RowSpan="5">
         <Interaction.Behaviors>
           <EventTriggerBehavior EventName="DragDelta">
-            <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding ScrollCommand}" />
+            <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragDeltaCommand}" />
           </EventTriggerBehavior>
           <EventTriggerBehavior EventName="DragCompleted">
             <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragCompletedCommand}" />
@@ -132,7 +159,12 @@
         </Interaction.Behaviors>
         <Thumb.Template>
           <ControlTemplate>
-            <Border Background="Yellow" Width="200" Height="175"/>
+            <Image Source="avares://InteractiveApp/Assets/img/vegano/vegano2.png"
+                   Stretch="Uniform">
+              <Image.RenderTransform>
+                <ScaleTransform ScaleX="1.4" ScaleY="1.4"/>
+              </Image.RenderTransform>
+            </Image>
           </ControlTemplate>
         </Thumb.Template>
       </Thumb>
