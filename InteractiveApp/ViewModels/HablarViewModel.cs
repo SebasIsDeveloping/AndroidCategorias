@@ -23,7 +23,7 @@ public partial class HablarViewModel : ViewModelBase
     [ObservableProperty] private bool _isRecord;
     [ObservableProperty] private bool _isLevelOk = false;
     [ObservableProperty] private bool _segundaPreguntaVisible = false;
-    [ObservableProperty] private bool _primeraPreguntaVisible = false;
+    [ObservableProperty] private bool _primeraPreguntaVisible = true;
     
     [RelayCommand]
     public async Task Record1()
@@ -104,7 +104,7 @@ public partial class HablarViewModel : ViewModelBase
     [RelayCommand]
     private void VolverMenu()
     {
-
+        _navegationService.NavigateTo(NavegationService.INICIO_VIEW);
     }
 
     [RelayCommand]

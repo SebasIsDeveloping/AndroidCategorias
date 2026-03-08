@@ -70,8 +70,8 @@
                     >
 
             <!-- Elemento 1 -->
-            <StackPanel Orientation="Vertical" IsVisible="{Binding PrimeraPreguntaVisible}"
-                        Spacing="5" 
+            <StackPanel Orientation="Vertical" 
+                        Spacing="5" IsVisible="{Binding PrimeraPreguntaVisible}"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center">
                 <TextBlock Text="¿Qué ingrediente falta?"  FontSize="16" FontWeight="DemiBold" VerticalAlignment="Center"/>
@@ -87,28 +87,29 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center">
                     <Image Width="32" Height="32" Source="avares://InteractiveApp/Assets/avalonia-logo.ico"/>
-                    <TextBlock Text="{Binding Text}"   FontSize="40" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding Text}"   FontSize="14" VerticalAlignment="Center"/>
                 </StackPanel>
             </StackPanel>
 
             <!-- Elemento 2 -->
-            <StackPanel Orientation="Vertical" IsVisible="{Binding SegundaPreguntaVisible}"
-                        Spacing="10" 
+            <StackPanel Orientation="Vertical" 
+                        Spacing="10" IsVisible="{Binding SegundaPreguntaVisible}"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center">
-                <TextBlock Text="¿A qué categoría pertenece?"  FontSize="40" FontWeight="DemiBold" VerticalAlignment="Center"/>
-                <Button Content="Escuchar" FontSize="35"
+                <TextBlock Text="¿A qué categoría pertenece?" TextAlignment="Center" TextWrapping="Wrap"  FontSize="16" FontWeight="DemiBold" VerticalAlignment="Center"/>
+                <Button Content="Escuchar" FontSize="14"
                         HorizontalAlignment="Center"
                         HorizontalContentAlignment="Center"
                         VerticalContentAlignment="Center"
-                        Padding="30, 10"
-                        Command="{Binding Record2Command}" 
+                        Command="{Binding Record1Command}" 
+                        Padding="10, 5"
                 />
-                <StackPanel Orientation="Horizontal" Spacing="20" 
+                <StackPanel Orientation="Horizontal"
+                            Spacing="10" 
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center">
-                    <Image Width="80" Height="80" Source="avares://InteractiveApp/Assets/avalonia-logo.ico"/>
-                    <TextBlock Text="{Binding Text}"   FontSize="40" VerticalAlignment="Center"/>
+                    <Image Width="32" Height="32" Source="avares://InteractiveApp/Assets/avalonia-logo.ico"/>
+                    <TextBlock Text="{Binding Text}"   FontSize="14" VerticalAlignment="Center"/>
                 </StackPanel>
             </StackPanel>
 
