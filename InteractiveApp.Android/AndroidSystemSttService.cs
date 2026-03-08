@@ -32,7 +32,16 @@ public class AndroidSystemSttService : ISttService
 
         return _tcs.Task;
     }
+    
+    public void CompletarTranscripcion(string texto)
+    {
+        _tcs?.TrySetResult(texto);
+    }
 
+    public void CancelarTranscripcion()
+    {
+        _tcs?.TrySetResult(""); 
+    }
     public void OnActivityResult(int requestCode, Result resultCode, Intent? data)
     {
         if (requestCode != 2001)

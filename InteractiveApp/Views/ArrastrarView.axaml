@@ -1,0 +1,240 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:InteractiveApp.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="400"
+             x:Class="InteractiveApp.Views.ArrastrarView"
+             x:DataType="viewModels:ArrastrarViewModel">
+    <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <viewModels:ArrastrarViewModel />
+  </Design.DataContext>
+        <UserControl.Background>
+                <ImageBrush Stretch="Fill"
+                            Source="avares://InteractiveApp/Assets/img/fondos/fondo_restaurante_completo.png">
+                </ImageBrush>
+        </UserControl.Background>
+
+  <Grid>
+    <Button Grid.Column="0"
+            Width="50" Height="40"
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            Margin="30, 10, 0, 0"
+            Command="{Binding VolverMenuCommand}"
+            Background="Transparent"
+            BorderThickness="0">
+      <Image Source="avares://InteractiveApp/Assets/img/iconos/volver.png"
+             Stretch="Uniform">
+        <Image.RenderTransform>
+          <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+        </Image.RenderTransform>
+      </Image>
+    </Button>
+    <Grid ShowGridLines="False"
+          ColumnDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*"
+          RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*">
+      
+      <Border Name="HuecoV"
+              Background="Transparent"
+              Width="180"
+              Height="100"
+              Grid.Row="24"
+              Grid.Column="8"/>
+      <Border Name="HuecoC"
+              Width="180"
+              Height="100"
+              Background="Transparent"
+              Grid.Row="24"
+              Grid.Column="22"/>
+      <Border Name="HuecoP"
+              Width="180"
+              Height="100"
+              Background="Transparent"
+              Grid.Row="24"
+              Grid.Column="35"/>
+      
+      <Thumb Name="I1" Tag="HuecoP" ZIndex="1" Grid.Column="8" Grid.Row="4" Grid.ColumnSpan="5" Grid.RowSpan="5">
+        <Interaction.Behaviors>
+          <EventTriggerBehavior EventName="DragDelta">
+            <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragDeltaCommand}" />
+          </EventTriggerBehavior>
+          <EventTriggerBehavior EventName="DragCompleted">
+            <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragCompletedCommand}" />
+          </EventTriggerBehavior>
+        </Interaction.Behaviors>
+        <Thumb.Template>
+          <ControlTemplate>
+            <Image Source="{Binding Img1}"
+                   Stretch="Uniform">
+              <Image.RenderTransform>
+                <ScaleTransform ScaleX="1" ScaleY="1"/>
+              </Image.RenderTransform>
+            </Image>
+          </ControlTemplate>
+        </Thumb.Template>
+      </Thumb>
+
+      <Thumb Name="I2" Tag="HuecoC" ZIndex="1" Grid.Column="19" Grid.Row="4" Grid.ColumnSpan="5" Grid.RowSpan="5">
+        <Interaction.Behaviors>
+          <EventTriggerBehavior EventName="DragDelta">
+            <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragDeltaCommand}" />
+          </EventTriggerBehavior>
+          <EventTriggerBehavior EventName="DragCompleted">
+            <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragCompletedCommand}" />
+          </EventTriggerBehavior>
+        </Interaction.Behaviors>
+        <Thumb.Template>
+          <ControlTemplate>
+            <Image Source="{Binding Img2}"
+                   Stretch="Uniform">
+              <Image.RenderTransform>
+                <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
+              </Image.RenderTransform>
+            </Image>
+          </ControlTemplate>
+        </Thumb.Template>
+      </Thumb>
+
+      <Thumb Name="I3" Tag="HuecoV" ZIndex="1" Grid.Column="29" Grid.Row="4" Grid.ColumnSpan="5" Grid.RowSpan="5">
+        <Interaction.Behaviors>
+          <EventTriggerBehavior EventName="DragDelta">
+            <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragDeltaCommand}" />
+          </EventTriggerBehavior>
+          <EventTriggerBehavior EventName="DragCompleted">
+            <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragCompletedCommand}" />
+          </EventTriggerBehavior>
+        </Interaction.Behaviors>
+        <Thumb.Template>
+          <ControlTemplate>
+            <Image Source="{Binding Img3}"
+                   Stretch="Uniform">
+              <Image.RenderTransform>
+                <ScaleTransform ScaleX="1" ScaleY="1"/>
+              </Image.RenderTransform>
+            </Image>
+          </ControlTemplate>
+        </Thumb.Template>
+      </Thumb>
+
+      <Thumb Name="I4" Tag="HuecoP" ZIndex="1" Grid.Column="8" Grid.Row="12" Grid.ColumnSpan="5" Grid.RowSpan="5">
+        <Interaction.Behaviors>
+          <EventTriggerBehavior EventName="DragDelta">
+            <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragDeltaCommand}" />
+          </EventTriggerBehavior>
+          <EventTriggerBehavior EventName="DragCompleted">
+            <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragCompletedCommand}" />
+          </EventTriggerBehavior>
+        </Interaction.Behaviors>
+        <Thumb.Template>
+          <ControlTemplate>
+            <Image Source="{Binding Img4}"
+                   Stretch="Uniform">
+              <Image.RenderTransform>
+                <ScaleTransform ScaleX="1" ScaleY="1"/>
+              </Image.RenderTransform>
+            </Image>
+          </ControlTemplate>
+        </Thumb.Template>
+      </Thumb>
+
+      <Thumb Name="I5" Tag="HuecoC" ZIndex="1" Grid.Column="19" Grid.Row="12" Grid.ColumnSpan="5" Grid.RowSpan="5">
+        <Interaction.Behaviors>
+          <EventTriggerBehavior EventName="DragDelta">
+            <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragDeltaCommand}" />
+          </EventTriggerBehavior>
+          <EventTriggerBehavior EventName="DragCompleted">
+            <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragCompletedCommand}" />
+          </EventTriggerBehavior>
+        </Interaction.Behaviors>
+        <Thumb.Template>
+          <ControlTemplate>
+            <Image Source="{Binding Img5}"
+                   Stretch="Uniform">
+              <Image.RenderTransform>
+                <ScaleTransform ScaleX="1" ScaleY="1"/>
+              </Image.RenderTransform>
+            </Image>
+          </ControlTemplate>
+        </Thumb.Template>
+      </Thumb>
+
+      <Thumb Name="I6" Tag="HuecoV" ZIndex="1" Grid.Column="29" Grid.Row="12" Grid.ColumnSpan="5" Grid.RowSpan="5">
+        <Interaction.Behaviors>
+          <EventTriggerBehavior EventName="DragDelta">
+            <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragDeltaCommand}" />
+          </EventTriggerBehavior>
+          <EventTriggerBehavior EventName="DragCompleted">
+            <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragCompletedCommand}" />
+          </EventTriggerBehavior>
+        </Interaction.Behaviors>
+        <Thumb.Template>
+          <ControlTemplate>
+            <Image Source="{Binding Img6}"
+                   Stretch="Uniform">
+              <Image.RenderTransform>
+                <ScaleTransform ScaleX="1" ScaleY="1"/>
+              </Image.RenderTransform>
+            </Image>
+          </ControlTemplate>
+        </Thumb.Template>
+      </Thumb>
+    </Grid>
+    <Border Background="BlanchedAlmond" BorderBrush="Black"
+                BoxShadow="5 5 5 0 #80000000"
+                HorizontalAlignment="Center"
+                CornerRadius="20"
+                Padding="20, 10"
+                VerticalAlignment="Center"
+                Width="420" Height="140"
+                ZIndex="100"
+                BorderThickness="2"
+                IsVisible="{Binding IsLevelOk}">
+            <StackPanel HorizontalAlignment="Center" Spacing="20"
+                        VerticalAlignment="Center">
+                <TextBlock Text="¡Nivel completado!"
+                           FontSize="26"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Foreground="Black"
+                           ZIndex="110" />
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="20"
+                            HorizontalAlignment="Center">
+                    <Border BorderBrush="Black"
+                            BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                            CornerRadius="5" Width="90" Height="35">
+                        <Border BorderBrush="White" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                BorderThickness="3"
+                                CornerRadius="2" Width="88" Height="33">
+                            <Button Content="Ir a menú" FontSize="14"
+                                    Background="DarkSalmon" Width="85" Height="30"
+                                    HorizontalAlignment="Center" Foreground="White"
+                                    HorizontalContentAlignment="Center" FontWeight="DemiBold"
+                                    VerticalContentAlignment="Center"
+                                    Command="{Binding VolverMenuCommand}"
+                                    Padding="10, 5" />
+                        </Border>
+                    </Border>
+                    <Border BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center"
+                            BorderThickness="1" CornerRadius="5"
+                            IsVisible="{Binding MostrarBoton}"
+                            Width="145" Height="35">
+                        <Border BorderBrush="White" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                BorderThickness="3" CornerRadius="2"
+                                Width="143" Height="33">
+                            <Button Content="Siguiente nivel" FontSize="14"
+                                    Background="DarkSalmon" Width="140" Height="30"
+                                    HorizontalAlignment="Center" Foreground="White"
+                                    HorizontalContentAlignment="Center" FontWeight="DemiBold"
+                                    VerticalContentAlignment="Center"
+                                    Command="{Binding SiguienteNivelCommand}"
+                                    Padding="10, 5" />
+                        </Border>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+  </Grid>
+</UserControl>
