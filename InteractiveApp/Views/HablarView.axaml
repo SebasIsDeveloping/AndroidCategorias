@@ -16,19 +16,14 @@
         <ImageBrush Stretch="Fill" Source="avares://InteractiveApp/Assets/img/fondos/fondo_hablar.png"></ImageBrush>
     </UserControl.Background>
 
-    <Grid ShowGridLines="True">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+    <Grid>
         <Border Background="BlanchedAlmond" BorderBrush="Black"
                 BoxShadow="5 5 5 0 #80000000"
                 HorizontalAlignment="Center"
-                CornerRadius="20" Grid.Column="1"
+                CornerRadius="20"
                 Padding="20, 10"
                 VerticalAlignment="Center"
                 Width="420" Height="140"
-                Margin="0, 50, 150, 0"
                 ZIndex="100"
                 BorderThickness="2"
                 IsVisible="{Binding IsLevelOk}">
@@ -78,6 +73,11 @@
                 </StackPanel>
             </StackPanel>
         </Border>
+        <Grid ShowGridLines="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
         
         <Button Grid.Column="0"
                 Width="50" Height="40"
@@ -176,5 +176,6 @@
             </StackPanel>
 
         </Border>
+    </Grid>
     </Grid>
 </UserControl>
