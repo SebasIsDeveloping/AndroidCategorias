@@ -210,6 +210,8 @@ public partial class ArrastrarViewModel : ViewModelBase
             if (!_colocados.Contains(thumb.Name))
             {
                 _colocados.Add(thumb.Name);
+                AppServices.AudioPlayer
+                    .PlayFromAsset("avares://InteractiveApp/Assets/audio/points_win.mp3");
                 _correctos++;
             }
 
@@ -219,6 +221,8 @@ public partial class ArrastrarViewModel : ViewModelBase
         }
         else
         {
+            AppServices.AudioPlayer
+                .PlayFromAsset("avares://InteractiveApp/Assets/audio/points_error.mp3");
             VolverAPosicionInicial(thumb);
         }
     }
