@@ -55,7 +55,7 @@
             <Image Source="avares://InteractiveApp/Assets/img/postre/postre1.png"
                    Stretch="Uniform">
               <Image.RenderTransform>
-                <ScaleTransform ScaleX="1.4" ScaleY="1.4"/>
+                <ScaleTransform ScaleX="1" ScaleY="1"/>
               </Image.RenderTransform>
             </Image>
           </ControlTemplate>
@@ -74,10 +74,9 @@
         <Thumb.Template>
           <ControlTemplate>
             <Image Source="avares://InteractiveApp/Assets/img/comida/comida1.png"
-                   Stretch="Uniform"
-                   Width="50">
+                   Stretch="Uniform">
               <Image.RenderTransform>
-                <ScaleTransform ScaleX="1.4" ScaleY="1.4"/>
+                <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
               </Image.RenderTransform>
             </Image>
           </ControlTemplate>
@@ -98,7 +97,7 @@
             <Image Source="avares://InteractiveApp/Assets/img/vegano/vegano1.png"
                    Stretch="Uniform">
               <Image.RenderTransform>
-                <ScaleTransform ScaleX="1.4" ScaleY="1.4"/>
+                <ScaleTransform ScaleX="1" ScaleY="1"/>
               </Image.RenderTransform>
             </Image>
           </ControlTemplate>
@@ -119,7 +118,7 @@
             <Image Source="avares://InteractiveApp/Assets/img/postre/postre2.png"
                    Stretch="Uniform">
               <Image.RenderTransform>
-                <ScaleTransform ScaleX="1.4" ScaleY="1.4"/>
+                <ScaleTransform ScaleX="1" ScaleY="1"/>
               </Image.RenderTransform>
             </Image>
           </ControlTemplate>
@@ -138,10 +137,9 @@
         <Thumb.Template>
           <ControlTemplate>
             <Image Source="avares://InteractiveApp/Assets/img/comida/comida2.png"
-                   Stretch="Uniform"
-                   Width="70">
+                   Stretch="Uniform">
               <Image.RenderTransform>
-                <ScaleTransform ScaleX="1.4" ScaleY="1.4"/>
+                <ScaleTransform ScaleX="1" ScaleY="1"/>
               </Image.RenderTransform>
             </Image>
           </ControlTemplate>
@@ -162,7 +160,7 @@
             <Image Source="avares://InteractiveApp/Assets/img/vegano/vegano2.png"
                    Stretch="Uniform">
               <Image.RenderTransform>
-                <ScaleTransform ScaleX="1.4" ScaleY="1.4"/>
+                <ScaleTransform ScaleX="1" ScaleY="1"/>
               </Image.RenderTransform>
             </Image>
           </ControlTemplate>
