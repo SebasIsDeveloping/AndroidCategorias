@@ -5,7 +5,7 @@
              xmlns:fa="using:FluentAvalonia.UI.Controls"
              xmlns:vm="clr-namespace:InteractiveApp.ViewModels"
              mc:Ignorable="d"
-             d:DesignWidth="1920" d:DesignHeight="1080"
+             d:DesignWidth="800" d:DesignHeight="400"
              x:Class="InteractiveApp.Views.MainView"
              x:DataType="vm:MainViewModel">
     <Design.DataContext>
