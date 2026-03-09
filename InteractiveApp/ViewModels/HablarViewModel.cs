@@ -134,6 +134,8 @@ public partial class HablarViewModel : ViewModelBase
     [RelayCommand]
     private void VolverMenu()
     {
+        AppServices.AudioPlayer
+            .PlayFromAsset("avares://InteractiveApp/Assets/audio/tap.mp3");
         _navegationService.NavigateTo(NavegationService.INICIO_VIEW);
     }
 
@@ -145,6 +147,8 @@ public partial class HablarViewModel : ViewModelBase
         PrimeraPreguntaVisible = true;
         SegundaPreguntaVisible = false;
         Text = "";
+        AppServices.AudioPlayer
+            .PlayFromAsset("avares://InteractiveApp/Assets/audio/tap.mp3");
         PhotoPath = new Bitmap(
             AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/" + ingredientesImg[_nivelActual])));
         if (_nivelActual == 2) FinNivel = false;
