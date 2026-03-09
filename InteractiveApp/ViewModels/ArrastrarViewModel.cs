@@ -1,21 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Avalonia;
-using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
-using Avalonia.Threading;
 using Avalonia.VisualTree;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using InteractiveApp.Services;
-using InteractiveApp.Views;
 
 namespace InteractiveApp.ViewModels;
 
@@ -69,7 +64,7 @@ public partial class ArrastrarViewModel : ViewModelBase
             t = new TranslateTransform();
             thumb.RenderTransform = t;
         }
-
+        
         switch (thumb.Name)
         {
             case "I1": if (_posI1 == default) _posI1 = new Point(t.X, t.Y); break;
@@ -91,44 +86,50 @@ public partial class ArrastrarViewModel : ViewModelBase
         
         var view = thumb.FindAncestorOfType<UserControl>();
         if (view == null) return;
+
         _ultimaVista = view;
-
+        
         var window = TopLevel.GetTopLevel(thumb);
-        var thumbRect = GetRect(thumb, window);
-        if (thumbRect == null) return;
-
+        
+        var thumbPos = thumb.TranslatePoint(new Point(0, 0), window);
+        if (thumbPos == null) return;
+        var thumbRect = new Rect(thumbPos.Value, thumb.Bounds.Size);
+        
         var huecoV = view.FindControl<Border>("HuecoV");
         var huecoC = view.FindControl<Border>("HuecoC");
         var huecoP = view.FindControl<Border>("HuecoP");
+        
+        var posV = huecoV.TranslatePoint(new Point(0, 0), window);
+        var rectV = new Rect(posV.Value, huecoV.Bounds.Size);
 
-        var rectV = GetRect(huecoV, window);
-        var rectC = GetRect(huecoC, window);
-        var rectP = GetRect(huecoP, window);
+        var posC = huecoC.TranslatePoint(new Point(0, 0), window);
+        var rectC = new Rect(posC.Value, huecoC.Bounds.Size);
+
+        var posP = huecoP.TranslatePoint(new Point(0, 0), window);
+        var rectP = new Rect(posP.Value, huecoP.Bounds.Size);
 
         string categoria = (string)thumb.Tag;
-        
         bool correcto = false;
-
-        switch (categoria)
+        
+        if (categoria == "HuecoV")
         {
-            case "HuecoV":
-                if (rectV != null && rectV.Value.Intersects(thumbRect.Value)) correcto = true;
-                break;
-            case "HuecoC":
-                if (rectC != null && rectC.Value.Intersects(thumbRect.Value)) correcto = true;
-                break;
-            case "HuecoP":
-                if (rectP != null && rectP.Value.Intersects(thumbRect.Value)) correcto = true;
-                break;
+            correcto = rectV.Intersects(thumbRect);
         }
-
+        else if (categoria == "HuecoC")
+        {
+            correcto = rectC.Intersects(thumbRect);
+        }
+        else if (categoria == "HuecoP")
+        {
+            correcto = rectP.Intersects(thumbRect);
+        }
+        
         if (correcto)
         {
             if (!_colocados.Contains(thumb.Name))
             {
                 _colocados.Add(thumb.Name);
-                AppServices.AudioPlayer
-                    .PlayFromAsset("avares://InteractiveApp/Assets/audio/points_win.mp3");
+                AppServices.AudioPlayer.PlayFromAsset("avares://InteractiveApp/Assets/audio/points_win.mp3");
                 _correctos++;
             }
 
@@ -138,21 +139,24 @@ public partial class ArrastrarViewModel : ViewModelBase
         }
         else
         {
-            AppServices.AudioPlayer
-                .PlayFromAsset("avares://InteractiveApp/Assets/audio/points_error.mp3");
+            AppServices.AudioPlayer.PlayFromAsset("avares://InteractiveApp/Assets/audio/points_error.mp3");
             VolverAPosicionInicial(thumb);
         }
     }
-
-    private Rect? GetRect(Control control, TopLevel window)
+    
+    private void VolverAPosicionInicial(Thumb thumb)
     {
-        Point? pos = control.TranslatePoint(new Point(0, 0), window);
+        if (thumb.RenderTransform is not TranslateTransform t) return;
 
-        if (pos == null) return null;
-
-        Point posicion = pos.Value;
-
-        return new Rect(posicion, control.Bounds.Size);
+        switch (thumb.Name)
+        {
+            case "I1": t.X = _posI1.X; t.Y = _posI1.Y; break;
+            case "I2": t.X = _posI2.X; t.Y = _posI2.Y; break;
+            case "I3": t.X = _posI3.X; t.Y = _posI3.Y; break;
+            case "I4": t.X = _posI4.X; t.Y = _posI4.Y; break;
+            case "I5": t.X = _posI5.X; t.Y = _posI5.Y; break;
+            case "I6": t.X = _posI6.X; t.Y = _posI6.Y; break;
+        }
     }
     
     [RelayCommand]
@@ -261,24 +265,5 @@ public partial class ArrastrarViewModel : ViewModelBase
         _correctos = 0;
         _colocados.Clear();
         IsLevelOk = false;
-    }
-    
-    private void VolverAPosicionInicial(Thumb thumb)
-    {
-        if (thumb.RenderTransform is not TranslateTransform t)
-        {
-            t = new TranslateTransform();
-            thumb.RenderTransform = t;
-        }
-
-        switch (thumb.Name)
-        {
-            case "I1": t.X = _posI1.X; t.Y = _posI1.Y; break;
-            case "I2": t.X = _posI2.X; t.Y = _posI2.Y; break;
-            case "I3": t.X = _posI3.X; t.Y = _posI3.Y; break;
-            case "I4": t.X = _posI4.X; t.Y = _posI4.Y; break;
-            case "I5": t.X = _posI5.X; t.Y = _posI5.Y; break;
-            case "I6": t.X = _posI6.X; t.Y = _posI6.Y; break;
-        }
     }
 }
