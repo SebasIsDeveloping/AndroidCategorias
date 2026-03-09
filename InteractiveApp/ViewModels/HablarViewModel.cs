@@ -25,7 +25,7 @@ public partial class HablarViewModel : ViewModelBase
     [ObservableProperty] private string _text = "";
     [ObservableProperty] private bool _isRecord;
     [ObservableProperty] private bool _isLevelOk = false;
-    [ObservableProperty] private bool _finNivel = true;
+    [ObservableProperty] private bool _mostrarBoton = true;
     [ObservableProperty] private bool _primeraPreguntaVisible = true;
     [ObservableProperty] private bool _segundaPreguntaVisible = false;
 
@@ -147,6 +147,6 @@ public partial class HablarViewModel : ViewModelBase
         Text = "";
         PhotoPath = new Bitmap(
             AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/" + ingredientesImg[_nivelActual])));
-        if (_nivelActual == 2) FinNivel = false;
+        if (_nivelActual == 2) MostrarBoton = false;
     }
 }

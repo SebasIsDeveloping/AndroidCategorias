@@ -18,6 +18,8 @@
         </UserControl.Background>
 
   <Grid>
+    
+    <!-- Boton de volver -->
     <Button Grid.Column="0"
             Width="50" Height="40"
             HorizontalAlignment="Left" VerticalAlignment="Top"
@@ -32,29 +34,13 @@
         </Image.RenderTransform>
       </Image>
     </Button>
+    
+    <!-- Distribucion -->
     <Grid ShowGridLines="False"
           ColumnDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*"
           RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*">
       
-      <Border Name="HuecoV"
-              Background="Transparent"
-              Width="180"
-              Height="100"
-              Grid.Row="24"
-              Grid.Column="8"/>
-      <Border Name="HuecoC"
-              Width="180"
-              Height="100"
-              Background="Transparent"
-              Grid.Row="24"
-              Grid.Column="22"/>
-      <Border Name="HuecoP"
-              Width="180"
-              Height="100"
-              Background="Transparent"
-              Grid.Row="24"
-              Grid.Column="35"/>
-      
+      <!-- Platillos -->
       <Thumb Name="I1" Tag="HuecoP" ZIndex="1" Grid.Column="8" Grid.Row="4" Grid.ColumnSpan="5" Grid.RowSpan="5">
         <Interaction.Behaviors>
           <EventTriggerBehavior EventName="DragDelta">
@@ -180,25 +166,33 @@
           </ControlTemplate>
         </Thumb.Template>
       </Thumb>
+      
+      <!-- Contenedores de categorias -->
+      <Border Name="HuecoV" Background="Transparent"
+              Width="180" Height="100"
+              Grid.Row="24" Grid.Column="8"/>
+      
+      <Border Name="HuecoC" Background="Transparent"
+              Width="180" Height="100"
+              Grid.Row="24" Grid.Column="22"/>
+      
+      <Border Name="HuecoP" Background="Transparent"
+              Width="180" Height="100"
+              Grid.Row="24" Grid.Column="35"/>
     </Grid>
+    
+    <!-- Popup -->
     <Border Background="BlanchedAlmond" BorderBrush="Black"
-                BoxShadow="5 5 5 0 #80000000"
-                HorizontalAlignment="Center"
-                CornerRadius="20"
-                Padding="20, 10"
-                VerticalAlignment="Center"
-                Width="420" Height="140"
-                ZIndex="100"
-                BorderThickness="2"
+                BoxShadow="5 5 5 0 #80000000" BorderThickness="2"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                CornerRadius="20" Padding="20, 10"
+                Width="420" Height="140" ZIndex="100"
                 IsVisible="{Binding IsLevelOk}">
             <StackPanel HorizontalAlignment="Center" Spacing="20"
                         VerticalAlignment="Center">
-                <TextBlock Text="¡Nivel completado!"
-                           FontSize="26"
-                           FontWeight="Bold"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Foreground="Black"
+                <TextBlock Text="¡Nivel completado!" FontSize="26"
+                           FontWeight="Bold" Foreground="Black"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"
                            ZIndex="110" />
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="20"
                             HorizontalAlignment="Center">
