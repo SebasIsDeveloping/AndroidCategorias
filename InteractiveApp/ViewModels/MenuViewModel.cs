@@ -12,20 +12,21 @@ public partial class MenuViewModel : ViewModelBase
         _navegationService =  navegationService;
     }
 
-    public MenuViewModel()
-    {
-        
-    }
+    public MenuViewModel() { }
     
     [RelayCommand]
     private void NavegateToArrastrar()
     {
+        AppServices.AudioPlayer
+            .PlayFromAsset("avares://InteractiveApp/Assets/audio/tap.mp3");
         _navegationService.NavigateTo(NavegationService.ARRASTRAR_VIEW);
     }
     
     [RelayCommand]
     private void NavegateToHablar()
     {
+        AppServices.AudioPlayer
+            .PlayFromAsset("avares://InteractiveApp/Assets/audio/tap.mp3");
         _navegationService.NavigateTo(NavegationService.HABLAR_VIEW);
     }
 }

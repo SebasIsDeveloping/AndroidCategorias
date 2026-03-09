@@ -158,6 +158,8 @@ public partial class ArrastrarViewModel : ViewModelBase
     [RelayCommand]
     private void VolverMenu()
     {
+        AppServices.AudioPlayer
+            .PlayFromAsset("avares://InteractiveApp/Assets/audio/tap.mp3");
         _navegationService.NavigateTo(NavegationService.INICIO_VIEW);
     }
 
@@ -167,6 +169,9 @@ public partial class ArrastrarViewModel : ViewModelBase
         var view = _ultimaVista; 
         if (view == null) return;
 
+        AppServices.AudioPlayer
+            .PlayFromAsset("avares://InteractiveApp/Assets/audio/tap.mp3");
+        
         _nivelActual++;
 
         if (_nivelActual == 2) MostrarBoton = false;
