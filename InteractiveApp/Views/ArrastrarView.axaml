@@ -62,7 +62,7 @@
         </Thumb.Template>
       </Thumb>
 
-      <Thumb Name="I2" Tag="HuecoC" ZIndex="1" Grid.Column="19" Grid.Row="4" Grid.ColumnSpan="5" Grid.RowSpan="5">
+      <Thumb Name="I2" Tag="HuecoV" ZIndex="1" Grid.Column="19" Grid.Row="4" Grid.ColumnSpan="5" Grid.RowSpan="5">
         <Interaction.Behaviors>
           <EventTriggerBehavior EventName="DragDelta">
             <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragDeltaCommand}" />
@@ -83,7 +83,7 @@
         </Thumb.Template>
       </Thumb>
 
-      <Thumb Name="I3" Tag="HuecoV" ZIndex="1" Grid.Column="29" Grid.Row="4" Grid.ColumnSpan="5" Grid.RowSpan="5">
+      <Thumb Name="I3" Tag="HuecoP" ZIndex="1" Grid.Column="29" Grid.Row="4" Grid.ColumnSpan="5" Grid.RowSpan="5">
         <Interaction.Behaviors>
           <EventTriggerBehavior EventName="DragDelta">
             <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragDeltaCommand}" />
@@ -104,7 +104,7 @@
         </Thumb.Template>
       </Thumb>
 
-      <Thumb Name="I4" Tag="HuecoP" ZIndex="1" Grid.Column="8" Grid.Row="12" Grid.ColumnSpan="5" Grid.RowSpan="5">
+      <Thumb Name="I4" Tag="HuecoC" ZIndex="1" Grid.Column="8" Grid.Row="12" Grid.ColumnSpan="5" Grid.RowSpan="5">
         <Interaction.Behaviors>
           <EventTriggerBehavior EventName="DragDelta">
             <InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding DragDeltaCommand}" />

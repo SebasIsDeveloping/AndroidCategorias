@@ -23,11 +23,11 @@ public partial class ArrastrarViewModel : ViewModelBase
     [ObservableProperty] private Bitmap _img1 =
         new (AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/postre/postre1.png")));
     [ObservableProperty] private Bitmap _img2 =
-        new (AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/comida/comida1.png")));
-    [ObservableProperty] private Bitmap _img3 =
         new (AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/vegano/vegano1.png")));
-    [ObservableProperty] private Bitmap _img4 =
+    [ObservableProperty] private Bitmap _img3 =
         new (AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/postre/postre2.png")));
+    [ObservableProperty] private Bitmap _img4 =
+        new (AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/comida/comida1.png")));
     [ObservableProperty] private Bitmap _img5 =
         new (AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/comida/comida2.png")));
     [ObservableProperty] private Bitmap _img6 =
@@ -36,9 +36,9 @@ public partial class ArrastrarViewModel : ViewModelBase
     private Point _posI1, _posI2, _posI3, _posI4, _posI5, _posI6;
     private readonly string[] _thumbs = { "I1", "I2", "I3", "I4", "I5", "I6" };
     
-    private string[] veganoImg = new[] { "vegano1.png", "vegano2.png", "vegano3.png", "vegano4.png", "vegano5.png", "vegano6.png" };
-    private string[] comidaImg = new[] { "comida1.png", "comida2.png", "comida3.png", "comida4.png", "comida5.png", "comida6.png" };
-    private string[] postreImg = new[] { "postre1.png", "postre2.png", "postre3.png", "postre4.png", "postre5.png", "postre6.png" };
+    private string[] veganoImg = new[] { "vegano3.png", "vegano4.png", "vegano5.png", "vegano6.png" };
+    private string[] comidaImg = new[] { "comida3.png", "comida4.png", "comida5.png", "comida6.png" };
+    private string[] postreImg = new[] { "postre3.png", "postre4.png", "postre5.png", "postre6.png" };
     
     private int _correctos = 0;
     private int _nivelActual = 0;
@@ -190,32 +190,32 @@ public partial class ArrastrarViewModel : ViewModelBase
         {
             case 1:
                 Img1 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/vegano/" + veganoImg[2])));
+                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/comida/" + comidaImg[0])));
                 Img2 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/postre/" + postreImg[2])));
+                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/postre/" + postreImg[0])));
                 Img3 = new Bitmap(
+                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/vegano/" + veganoImg[0])));
+                Img4 = new Bitmap(
+                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/postre/" + postreImg[1])));
+                Img5 = new Bitmap(
+                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/vegano/" + veganoImg[1])));
+                Img6 = new Bitmap(
+                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/comida/" + comidaImg[1])));
+                break;
+
+            case 2:
+                Img1 = new Bitmap(
                     AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/comida/" + comidaImg[2])));
+                Img2 = new Bitmap(
+                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/vegano/" + veganoImg[2])));
+                Img3 = new Bitmap(
+                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/postre/" + postreImg[2])));
                 Img4 = new Bitmap(
                     AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/vegano/" + veganoImg[3])));
                 Img5 = new Bitmap(
                     AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/postre/" + postreImg[3])));
                 Img6 = new Bitmap(
                     AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/comida/" + comidaImg[3])));
-                break;
-
-            case 2:
-                Img1 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/comida/" + comidaImg[4])));
-                Img2 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/vegano/" + veganoImg[4])));
-                Img3 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/postre/" + postreImg[4])));
-                Img4 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/comida/" + comidaImg[5])));
-                Img5 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/vegano/" + veganoImg[5])));
-                Img6 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/postre/" + postreImg[5])));
                 break;
         }
     }
@@ -237,11 +237,11 @@ public partial class ArrastrarViewModel : ViewModelBase
         switch (_nivelActual)
         {
             case 1:
-                tags = new[] { "HuecoV", "HuecoP", "HuecoC", "HuecoV", "HuecoP", "HuecoC" };
+                tags = new[] { "HuecoC", "HuecoP", "HuecoV", "HuecoP", "HuecoV", "HuecoC" };
                 break;
 
             case 2:
-                tags = new[] { "HuecoC", "HuecoV", "HuecoP", "HuecoC", "HuecoV", "HuecoP" };
+                tags = new[] { "HuecoC", "HuecoV", "HuecoP", "HuecoV", "HuecoP", "HuecoC" };
                 break;
         }
 
