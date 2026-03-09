@@ -25,7 +25,7 @@ public partial class HablarViewModel : ViewModelBase
     [ObservableProperty] private string _text = "";
     [ObservableProperty] private bool _isRecord;
     [ObservableProperty] private bool _isLevelOk = false;
-    [ObservableProperty] private bool _finNivel = true;
+    [ObservableProperty] private bool _mostrarBoton = true;
     [ObservableProperty] private bool _primeraPreguntaVisible = true;
     [ObservableProperty] private bool _segundaPreguntaVisible = false;
 
@@ -119,9 +119,12 @@ public partial class HablarViewModel : ViewModelBase
                     .PlayFromAsset("avares://InteractiveApp/Assets/audio/points_win.mp3");
                 IsLevelOk = true;
             }
-
-            AppServices.AudioPlayer
-                .PlayFromAsset("avares://InteractiveApp/Assets/audio/endrecord.mp3");
+            else
+            {
+                AppServices.AudioPlayer
+                    .PlayFromAsset("avares://InteractiveApp/Assets/audio/points_error.mp3");
+            }
+            
             IsRecord = false;
         }
         catch (Exception ex)
@@ -134,6 +137,8 @@ public partial class HablarViewModel : ViewModelBase
     [RelayCommand]
     private void VolverMenu()
     {
+        AppServices.AudioPlayer
+            .PlayFromAsset("avares://InteractiveApp/Assets/audio/tap.mp3");
         _navegationService.NavigateTo(NavegationService.INICIO_VIEW);
     }
 
@@ -145,8 +150,10 @@ public partial class HablarViewModel : ViewModelBase
         PrimeraPreguntaVisible = true;
         SegundaPreguntaVisible = false;
         Text = "";
+        AppServices.AudioPlayer
+            .PlayFromAsset("avares://InteractiveApp/Assets/audio/tap.mp3");
         PhotoPath = new Bitmap(
             AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/" + ingredientesImg[_nivelActual])));
-        if (_nivelActual == 2) FinNivel = false;
+        if (_nivelActual == 2) MostrarBoton = false;
     }
 }

@@ -1,21 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Avalonia;
-using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
-using Avalonia.Threading;
 using Avalonia.VisualTree;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using InteractiveApp.Services;
-using InteractiveApp.Views;
 
 namespace InteractiveApp.ViewModels;
 
@@ -24,24 +19,27 @@ public partial class ArrastrarViewModel : ViewModelBase
     private NavegationService _navegationService;
     [ObservableProperty] private bool isLevelOk;
     [ObservableProperty] private bool mostrarBoton = true;
+    
     [ObservableProperty] private Bitmap _img1 =
-        new Bitmap(AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/postre/postre1.png")));
+        new (AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/postre/postre1.png")));
     [ObservableProperty] private Bitmap _img2 =
-        new Bitmap(AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/comida/comida1.png")));
+        new (AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/vegano/vegano1.png")));
     [ObservableProperty] private Bitmap _img3 =
-        new Bitmap(AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/vegano/vegano1.png")));
+        new (AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/postre/postre2.png")));
     [ObservableProperty] private Bitmap _img4 =
-        new Bitmap(AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/postre/postre2.png")));
+        new (AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/comida/comida1.png")));
     [ObservableProperty] private Bitmap _img5 =
-        new Bitmap(AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/comida/comida2.png")));
+        new (AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/comida/comida2.png")));
     [ObservableProperty] private Bitmap _img6 =
-        new Bitmap(AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/vegano/vegano2.png")));
+        new (AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/vegano/vegano2.png")));
     
     private Point _posI1, _posI2, _posI3, _posI4, _posI5, _posI6;
     private readonly string[] _thumbs = { "I1", "I2", "I3", "I4", "I5", "I6" };
-    public string[] veganoImg = new[] { "vegano1.png", "vegano2.png", "vegano3.png", "vegano4.png", "vegano5.png", "vegano6.png" };
-    public string[] comidaImg = new[] { "comida1.png", "comida2.png", "comida3.png", "comida4.png", "comida5.png", "comida6.png" };
-    public string[] postreImg = new[] { "postre1.png", "postre2.png", "postre3.png", "postre4.png", "postre5.png", "postre6.png" };
+    
+    private string[] veganoImg = new[] { "vegano3.png", "vegano4.png", "vegano5.png", "vegano6.png" };
+    private string[] comidaImg = new[] { "comida3.png", "comida4.png", "comida5.png", "comida6.png" };
+    private string[] postreImg = new[] { "postre3.png", "postre4.png", "postre5.png", "postre6.png" };
+    
     private int _correctos = 0;
     private int _nivelActual = 0;
     private HashSet<string> _colocados = new();
@@ -50,103 +48,10 @@ public partial class ArrastrarViewModel : ViewModelBase
     public ArrastrarViewModel(NavegationService navegationService)
     {
         _navegationService = navegationService;
-        CambiarImagenes();
     }
     public ArrastrarViewModel()
     {
         
-    }
-
-    private void CambiarImagenes()
-    {
-
-        switch (_nivelActual)
-        {
-            case 0:
-                Img1 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/postre/" + postreImg[0])));
-                Img2 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/comida/" + comidaImg[0])));
-                Img3 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/vegano/" + veganoImg[0])));
-                Img4 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/postre/" + postreImg[1])));
-                Img5 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/comida/" + comidaImg[1])));
-                Img6 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/vegano/" + veganoImg[1])));
-                break;
-
-            case 1:
-                Img1 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/vegano/" + veganoImg[2])));
-                Img2 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/postre/" + postreImg[2])));
-                Img3 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/comida/" + comidaImg[2])));
-                Img4 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/vegano/" + veganoImg[3])));
-                Img5 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/postre/" + postreImg[3])));
-                Img6 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/comida/" + comidaImg[3])));
-                break;
-
-            case 2:
-                Img1 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/comida/" + comidaImg[4])));
-                Img2 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/vegano/" + veganoImg[4])));
-                Img3 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/postre/" + postreImg[4])));
-                Img4 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/comida/" + comidaImg[5])));
-                Img5 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/vegano/" + veganoImg[5])));
-                Img6 = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/postre/" + postreImg[5])));
-                break;
-        }
-    }
-    
-    private void CambiarTags(UserControl view)
-    {
-        var I1 = view.FindControl<Thumb>("I1");
-        var I2 = view.FindControl<Thumb>("I2");
-        var I3 = view.FindControl<Thumb>("I3");
-        var I4 = view.FindControl<Thumb>("I4");
-        var I5 = view.FindControl<Thumb>("I5");
-        var I6 = view.FindControl<Thumb>("I6");
-
-        switch (_nivelActual)
-        {
-            case 0:
-                I1.Tag = "HuecoP";
-                I2.Tag = "HuecoC";
-                I3.Tag = "HuecoV";
-                I4.Tag = "HuecoP";
-                I5.Tag = "HuecoC";
-                I6.Tag = "HuecoV";
-                break;
-
-            case 1:
-                I1.Tag = "HuecoV";
-                I2.Tag = "HuecoP";
-                I3.Tag = "HuecoC";
-                I4.Tag = "HuecoV";
-                I5.Tag = "HuecoP";
-                I6.Tag = "HuecoC";
-                break;
-
-            case 2:
-                I1.Tag = "HuecoC";
-                I2.Tag = "HuecoV";
-                I3.Tag = "HuecoP";
-                I4.Tag = "HuecoC";
-                I5.Tag = "HuecoV";
-                I6.Tag = "HuecoP";
-                break;
-        }
     }
 
     [RelayCommand]
@@ -159,7 +64,7 @@ public partial class ArrastrarViewModel : ViewModelBase
             t = new TranslateTransform();
             thumb.RenderTransform = t;
         }
-
+        
         switch (thumb.Name)
         {
             case "I1": if (_posI1 == default) _posI1 = new Point(t.X, t.Y); break;
@@ -181,37 +86,50 @@ public partial class ArrastrarViewModel : ViewModelBase
         
         var view = thumb.FindAncestorOfType<UserControl>();
         if (view == null) return;
+
         _ultimaVista = view;
-
+        
         var window = TopLevel.GetTopLevel(thumb);
-        var thumbRect = GetRect(thumb, window);
-        if (thumbRect == null) return;
-
+        
+        var thumbPos = thumb.TranslatePoint(new Point(0, 0), window);
+        if (thumbPos == null) return;
+        var thumbRect = new Rect(thumbPos.Value, thumb.Bounds.Size);
+        
         var huecoV = view.FindControl<Border>("HuecoV");
         var huecoC = view.FindControl<Border>("HuecoC");
         var huecoP = view.FindControl<Border>("HuecoP");
+        
+        var posV = huecoV.TranslatePoint(new Point(0, 0), window);
+        var rectV = new Rect(posV.Value, huecoV.Bounds.Size);
 
-        var rectV = GetRect(huecoV, window);
-        var rectC = GetRect(huecoC, window);
-        var rectP = GetRect(huecoP, window);
+        var posC = huecoC.TranslatePoint(new Point(0, 0), window);
+        var rectC = new Rect(posC.Value, huecoC.Bounds.Size);
+
+        var posP = huecoP.TranslatePoint(new Point(0, 0), window);
+        var rectP = new Rect(posP.Value, huecoP.Bounds.Size);
 
         string categoria = (string)thumb.Tag;
-
-        bool correcto = categoria switch
+        bool correcto = false;
+        
+        if (categoria == "HuecoV")
         {
-            "HuecoV" => rectV?.Intersects(thumbRect.Value) == true,
-            "HuecoC" => rectC?.Intersects(thumbRect.Value) == true,
-            "HuecoP" => rectP?.Intersects(thumbRect.Value) == true,
-            _ => false
-        };
-
+            correcto = rectV.Intersects(thumbRect);
+        }
+        else if (categoria == "HuecoC")
+        {
+            correcto = rectC.Intersects(thumbRect);
+        }
+        else if (categoria == "HuecoP")
+        {
+            correcto = rectP.Intersects(thumbRect);
+        }
+        
         if (correcto)
         {
             if (!_colocados.Contains(thumb.Name))
             {
                 _colocados.Add(thumb.Name);
-                AppServices.AudioPlayer
-                    .PlayFromAsset("avares://InteractiveApp/Assets/audio/points_win.mp3");
+                AppServices.AudioPlayer.PlayFromAsset("avares://InteractiveApp/Assets/audio/points_win.mp3");
                 _correctos++;
             }
 
@@ -221,19 +139,14 @@ public partial class ArrastrarViewModel : ViewModelBase
         }
         else
         {
-            AppServices.AudioPlayer
-                .PlayFromAsset("avares://InteractiveApp/Assets/audio/points_error.mp3");
+            AppServices.AudioPlayer.PlayFromAsset("avares://InteractiveApp/Assets/audio/points_error.mp3");
             VolverAPosicionInicial(thumb);
         }
     }
-
+    
     private void VolverAPosicionInicial(Thumb thumb)
     {
-        if (thumb.RenderTransform is not TranslateTransform t)
-        {
-            t = new TranslateTransform();
-            thumb.RenderTransform = t;
-        }
+        if (thumb.RenderTransform is not TranslateTransform t) return;
 
         switch (thumb.Name)
         {
@@ -245,33 +158,12 @@ public partial class ArrastrarViewModel : ViewModelBase
             case "I6": t.X = _posI6.X; t.Y = _posI6.Y; break;
         }
     }
-
-    private Rect? GetRect(Control control, TopLevel window)
-    {
-        var pos = control.TranslatePoint(new Point(0, 0), window);
-        if (pos is null) return null;
-        return new Rect(pos.Value, control.Bounds.Size);
-    }
-
-    [RelayCommand]
-    public void Scroll(VectorEventArgs e)
-    {
-        if (IsLevelOk) return;
-        if (e.Source is not Thumb thumb) return;
-
-        if (thumb.RenderTransform is not TranslateTransform t)
-        {
-            t = new TranslateTransform();
-            thumb.RenderTransform = t;
-        }
-
-        t.X += e.Vector.X;
-        t.Y += e.Vector.Y;
-    }
     
     [RelayCommand]
     private void VolverMenu()
     {
+        AppServices.AudioPlayer
+            .PlayFromAsset("avares://InteractiveApp/Assets/audio/tap.mp3");
         _navegationService.NavigateTo(NavegationService.INICIO_VIEW);
     }
 
@@ -281,6 +173,9 @@ public partial class ArrastrarViewModel : ViewModelBase
         var view = _ultimaVista; 
         if (view == null) return;
 
+        AppServices.AudioPlayer
+            .PlayFromAsset("avares://InteractiveApp/Assets/audio/tap.mp3");
+        
         _nivelActual++;
 
         if (_nivelActual == 2) MostrarBoton = false;
@@ -289,11 +184,76 @@ public partial class ArrastrarViewModel : ViewModelBase
         ReiniciarNivel(view);
     }
     
+    private void CambiarImagenes()
+    {
+        switch (_nivelActual)
+        {
+            case 1:
+                Img1 = new Bitmap(
+                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/comida/" + comidaImg[0])));
+                Img2 = new Bitmap(
+                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/postre/" + postreImg[0])));
+                Img3 = new Bitmap(
+                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/vegano/" + veganoImg[0])));
+                Img4 = new Bitmap(
+                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/postre/" + postreImg[1])));
+                Img5 = new Bitmap(
+                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/vegano/" + veganoImg[1])));
+                Img6 = new Bitmap(
+                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/comida/" + comidaImg[1])));
+                break;
+
+            case 2:
+                Img1 = new Bitmap(
+                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/comida/" + comidaImg[2])));
+                Img2 = new Bitmap(
+                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/vegano/" + veganoImg[2])));
+                Img3 = new Bitmap(
+                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/postre/" + postreImg[2])));
+                Img4 = new Bitmap(
+                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/vegano/" + veganoImg[3])));
+                Img5 = new Bitmap(
+                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/postre/" + postreImg[3])));
+                Img6 = new Bitmap(
+                    AssetLoader.Open(new Uri("avares://InteractiveApp/Assets/img/comida/" + comidaImg[3])));
+                break;
+        }
+    }
+    
+    private void CambiarTags(UserControl view)
+    {
+        Thumb[] thumbs =
+        {
+            view.FindControl<Thumb>("I1"),
+            view.FindControl<Thumb>("I2"),
+            view.FindControl<Thumb>("I3"),
+            view.FindControl<Thumb>("I4"),
+            view.FindControl<Thumb>("I5"),
+            view.FindControl<Thumb>("I6")
+        };
+
+        string[] tags = new string[6];
+
+        switch (_nivelActual)
+        {
+            case 1:
+                tags = new[] { "HuecoC", "HuecoP", "HuecoV", "HuecoP", "HuecoV", "HuecoC" };
+                break;
+
+            case 2:
+                tags = new[] { "HuecoC", "HuecoV", "HuecoP", "HuecoV", "HuecoP", "HuecoC" };
+                break;
+        }
+
+        for (int i = 0; i < thumbs.Length; i++)
+        {
+            if (thumbs[i] != null) thumbs[i].Tag = tags[i];
+        }
+    }
+    
     private void ReiniciarNivel(UserControl view)
     {
-        string[] thumbs = { "I1", "I2", "I3", "I4", "I5", "I6" };
-
-        foreach (var nombre in thumbs)
+        foreach (var nombre in _thumbs)
         {
             var thumb = view.FindControl<Thumb>(nombre);
             if (thumb == null) continue;
