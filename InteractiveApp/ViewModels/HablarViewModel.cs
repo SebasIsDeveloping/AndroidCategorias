@@ -119,9 +119,12 @@ public partial class HablarViewModel : ViewModelBase
                     .PlayFromAsset("avares://InteractiveApp/Assets/audio/points_win.mp3");
                 IsLevelOk = true;
             }
-
-            AppServices.AudioPlayer
-                .PlayFromAsset("avares://InteractiveApp/Assets/audio/endrecord.mp3");
+            else
+            {
+                AppServices.AudioPlayer
+                    .PlayFromAsset("avares://InteractiveApp/Assets/audio/points_error.mp3");
+            }
+            
             IsRecord = false;
         }
         catch (Exception ex)
