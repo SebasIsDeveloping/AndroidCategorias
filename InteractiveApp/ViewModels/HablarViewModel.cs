@@ -57,7 +57,7 @@ public partial class HablarViewModel : ViewModelBase
 
             Text = "Preparando…";
             IsRecord = true;
-            var audio = await AppServices.AudioRecorder.RecordAsync(3);
+            var audio = await AppServices.AudioRecorder.RecordAsync(1);
 
             Text = "Escuchando…";
 
@@ -107,7 +107,7 @@ public partial class HablarViewModel : ViewModelBase
 
             Text = "Preparando…";
             IsRecord = true;
-            var audio = await AppServices.AudioRecorder.RecordAsync(3);
+            var audio = await AppServices.AudioRecorder.RecordAsync(0);
 
             Text = "Escuchando…";
 
